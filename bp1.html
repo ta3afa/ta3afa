@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="anonymous">
+<meta name="discription" content="intro wibsite">
+<meta name="keywords" content="programming,campe_programe,programeClaire">
+<meta name="robots" content="index,follow">
+
+<meta property="og:image" content="image.jbg">
+<meta property="og:discription" content="introWebsite">
+<meta property="og:title" content="ProgramClaire">
+<meta property="og:url" content="https://www.Programe_cliare.com">
+<meta property="og:type" content="website">
+
+<link rel="stylesheet" href="style_7.css">
+
+<link href="https://fonts.googleapis.com/css2?family=kufam:wght@400;700&display=swap" rel="stylesheet">
+
+<title>lir_today</title>
+</head>
+
+<body>
+
+
+
+
+<!-- قسم الأهداف -->
+ <div class="background_bp1">
+ <h1 class="h1">أهداف اليوم</h1>
+ <h2 class="h2">(لا تنسى حتى لأشياء الصغيرة تحدت فرقا )</h2>
+ 
+
+<div class="goals">
+
+<div class="goal">
+<input type="checkbox">
+<button class="plus">+</button>
+<input type="text" class="goal_input" placeholder=" الهدف 1">
+</div>
+
+<div class="goal">
+<input type="checkbox">
+<button class="plus">+</button>
+<input type="text" class="goal_input" placeholder="الهدف 2">
+</div>
+
+<div class="goal">
+<input type="checkbox">
+<button class="plus">+</button>
+<input type="text" class="goal_input" placeholder="الهدف 3">
+</div>
+
+</div>
+<button 
+class="button">أكملت مهامي</button>
+</div>
+
+
+
+<script>
+
+const buttons = document.querySelectorAll(".plus");
+
+buttons.forEach(button => {
+
+button.addEventListener("click", function(){
+
+let input = this.nextElementSibling;
+
+if(input.style.display === "block"){
+input.style.display = "none";
+}else{
+input.style.display = "block";
+}
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

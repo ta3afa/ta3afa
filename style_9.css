@@ -1,0 +1,71 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'kufam',sans-serif;
+}
+body{
+    background:linear-gradient(135deg,#bee728,hsl(27, 100%, 51%));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.background_bp6{
+    background-color:rgba(255, 255, 255, 0.329);
+    width:100%;
+    max-width:1000px;
+    height:500px;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    position: absolute;
+}
+.h1{
+    font-weight:700;
+    font-size:40px;
+    color:#ff0404;
+    margin-bottom:20px;
+}
+.text_1{
+    font-size:18px;
+    color:#333;
+    margin-bottom:30px;
+}
+#startBtn, #closeBtn{
+    margin-top:15%;
+    padding: 15px 40px;
+    font-size: 18px;
+    background-color:#ff0404;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+#startBtn:hover, #closeBtn:hover{
+    background-color:#ff6b6b;
+}
+#progressContainer{
+    width:80%;
+    height:20px;
+    background-color:rgba(5, 252, 58, 0.589);
+    border-radius:10px;
+    margin: 30px auto;
+    overflow:hidden;
+}
+#progressBar{
+    height:100%;
+    width:0%;
+    background-color:#ff0404;
+    border-radius:10px;
+    transition:width 1s linear;
+}
+#progressPage{
+    background-color:rgba(255,255,255,1);
+
+}
+#congratsOverlay{
+    background-color:rgba(255,255,255,1);
+
+}

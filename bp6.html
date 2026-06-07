@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author"content="anonymous">
+        <meta name="discription"content="intro wibsite">
+        <meta name="keywords"content="programming,campe_programe,programeClaire">
+        <meta name="robots"content="index,follow">
+        <meta property="og:image"content="image.jbg">
+        <meta property="og:discription"content="introWebsite">
+        <meta property="og:title"content="ProgramClaire">
+        <meta property="og:url"content="https://www.Programe_cliare.com">
+        <meta property="og:type"content="website">
+        <link rel="stylesheet"href="style_9.css">
+        <title>spire</title>
+    </head>
+<body>
+    <!-- صفحة البداية -->
+    <div id="startPage" class="background_bp6">
+        <h1 class="h1">خد نفس</h1>
+        <h3 class="text_1">اجلس في مكان هادئ واسترح. عند الضغط على زر (ابدأ)، استنشق الهواء من أنفك وأخرجه من فمك ببطء.</h3>
+        <button id="startBtn">ابدأ</button>
+    </div>
+
+    <!-- صفحة شريط التقدم تظهر فوق صفحة البداية -->
+    <div id="progressPage" class="background_bp6" style="display:none; flex-direction: column; justify-content:center; align-items:center;">
+        <h2>تنفس الآن...</h2>
+        <div id="progressContainer">
+            <div id="progressBar"></div>
+        </div>
+    </div>
+
+    <!-- نافذة التهنئة -->
+    <div id="congratsOverlay" class="background_bp6" style="display:none; flex-direction: column; justify-content:center; align-items:center;">
+        <h2>تهانينا! أحسنت</h2>
+        <button id="closeBtn">اغلاق</button>
+    </div>
+
+    <script src="./js/bp6.js"></script>
+</body>
+</html>

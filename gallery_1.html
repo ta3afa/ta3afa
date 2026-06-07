@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar">
+    <head>
+        <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author"content="Houalla Mohmade">
+        <meta name="description"content="Intro Website">
+        <meta name="keywords"content="Programmation.........">
+        <meta name="robots"content="index,follow">
+        <meta property="og:image"content="image.jpeg">
+        <meta property="og:description"content="Intro website">
+        <meta property="og:tile"content="Programing_Campe">
+        <meta property="og:url"content="https://www.Programming_Campe.com">
+        <meta property="og:type"content="website">
+        <link rel="stylesheet" href="style_3.css?f=077">
+        <title>gallery</title>
+    </head>
+   <body>
+    <div class="app">
+        <div class="top-menu-container">
+            <button class="scroll-left"> ◀ </button>
+            <div class="topMenu"id="topMenu">
+                <button
+                onclick="window.location.href='./bp4.html' ">مقولة اليوم</button>
+                <button
+                onclick="window.location.href='./bp5.html'">أكتب ماتشعر به</button>
+                <button
+                onclick="window.location.href='./bp1.html' ">رتب نفسك</button>
+                <button
+                onclick="window.location.href='./bp2.html' ">مكتبة التعافي</button> 
+                <button 
+                id="button_6"
+                onclick="window.location.href='./bp6.html' ">خد نفس</button>
+                
+            </div>
+            <button class="scroll-right"> ▶ </button>
+        </div>
+        <div class="card-background">
+            <img src="./image_project/o.png"class="card">
+            <div class="days_001">
+                <span id="days_1">0%</span>
+            </div>
+            <div class="creat_ursalf">
+                <button
+                id="button_ursalf"
+                onclick="enter_ursalf()">أكتب رسالة لنفسك</button>
+            </div>
+        </div> 
+        <div class="scene">
+            <div class="platform"></div>
+            <div class="background_01">
+            <img src="./image_project/gg.png" class="background_1">
+            <img src="./image_project/gg.png" class="background"id="shadow">
+        </div>
+
+        </div>
+
+
+
+        
+        
+
+    
+       
+        
+    <div class="border">
+    <button class="botton_border" onclick="progress()">تقدم</button>
+    <button class="botton_border_0" onclick="botton_bordetr_00()">ساعدني</button>
+
+    <div class="aa">
+        <span id="days">0</span>
+        <h2 id="total-days">/90</h2>
+        <h2 class="days_1">الأيام</h2>
+    </div>
+
+    <div class="cc">
+        <span id="days_2">0</span>
+        <h2 class="days22">الإنتكاسات</h2>
+    </div>
+
+    <button class="error" id="error_1">أخطأت</button>
+</div>
+        <div id="popup" class="popup">
+                <div class="popup-content">
+                    <h3>أكتب أهدافك عندما تقلع عن ب ستعرض عند الحاجة للمساعدة هده أفضل فكرة لتستمر</h3>
+                    <textarea id="message"
+                    placeholder="أكتب هنا..."></textarea>
+                    <div id="iii">
+                    <button 
+                    class="save_1"
+                    onclick="saveMesage()">حفض</button>
+                    <button
+                    class="save_2"
+                    onclick="closeBox()">إغلاق</button>
+                    </div>
+                </div>
+        </div>
+        <div id="popupShow" class="popup1">
+            <div class="popup-content1">
+                <h3>رسالتك لنفسك</h3>
+                <p id="savedText"></p>
+                <button
+                class="save_3"
+                onclick="closeShow1()">حسنا</button>
+            </div>
+        </div>
+        <div class="history-box">
+            <h3 id="j1"> السجل</h3>
+            <p></p>
+
+        <div class="history-content" id="historyBox">
+        
+        
+    </div>
+</div>
+</div>
+        
+          
+
+       
+        
+        
+        
+
+      
+
+
+
+<script>
+let day = 0;
+let displayDay = 0;
+let max = 96;
+let firstClick = true;
+
+let daysSpan = document.getElementById("days");    
+let progressSpan = document.getElementById("days_1");
+let mistakesSpan = document.getElementById("days_2");
+
+let mistakes = 0;
+
+/* ✅ السجل */
+function addToHistory(value){  
+    let historyBox = document.getElementById("historyBox");  
+
+    let current = historyBox.querySelector(".current");
+
+    // إنشاء سطر واحد فقط إذا لم يكن موجود
+    if(!current){
+        current = document.createElement("p");
+        current.className = "current";
+        historyBox.appendChild(current);
+    }
+
+    // تحديث نفس السطر فقط
+    current.innerText =` ⭐ هذا رائع! أكملت ${value} أيام`;
+}
+
+/* ✅ عند التقدم */
+function progress(){
+
+    // 📅 تاريخ اليوم
+    let today = new Date().toISOString().split("T")[0];
+
+    // 📦 آخر يوم ضغط فيه المستخدم
+    let lastClick = localStorage.getItem("lastProgressDate");
+
+    // ❌ إذا ضغط اليوم بالفعل → امنعه
+    if(lastClick === today){
+        alert("لقد ضغطت اليوم بالفعل، عد غدًا 👍");
+        return;
+    }
+
+    // ✅ نحفظ تاريخ اليوم
+    localStorage.setItem("lastProgressDate", today);
+
+
+    // ===== كودك الأصلي بدون تغيير =====
+    if(day < max){
+        if(firstClick){
+            day += 5;
+            displayDay += 1;
+            firstClick = false;
+        } else {
+            day += 1;
+            displayDay += 1;
+        }
+
+        if(day > max) day = max;
+
+        daysSpan.innerText = displayDay;
+
+        let percent = (day / max) * 100;
+        progressSpan.innerText = Math.floor(percent) + "%";
+
+        document.getElementById("shadow").style.clipPath =
+            "inset(0 0 " + percent + "% 0)";
+
+        addToHistory(displayDay);
+    }
+}
+
+/* ✅ عند الأخطاء */
+function addMistake(){
+    mistakes += 1;
+    mistakesSpan.innerText = mistakes;
+
+    resetAll();
+}
+
+/* ✅ إعادة التصفير + حفظ السطر */
+function resetAll(){
+    let savedDays = displayDay;
+
+    let historyBox = document.getElementById("historyBox");
+    document.getElementById("shadow").style.clipPath = 
+    "inset(0 0 0% 0)";
+
+    if(savedDays > 0){
+        let p = document.createElement("p");
+        p.innerText =`رائع أكملت ${savedDays} يوم حاول مجدا🚀️`;
+
+        historyBox.appendChild(p); // سطر جديد فقط عند الأخطأ
+        
+    }
+
+    // تصفير العداد
+    day = 0;
+    displayDay = 0;
+    firstClick = true;
+
+    daysSpan.innerText = displayDay;
+    progressSpan.innerText = "0%";
+
+    document.getElementById("shadow").style.clipPath =
+        "inset(0 0 0% 0 )";
+}
+
+/* زر الأخطأ */
+document.getElementById("error_1").addEventListener("click", addMistake);
+
+/* السحب الأفقي */
+document.addEventListener('DOMContentLoaded', () => {
+    const topMenu = document.getElementById('topMenu');
+    const scrollAmount = 150;
+
+    document.querySelector('.scroll-left').addEventListener('click', () => {
+        topMenu.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    document.querySelector('.scroll-right').addEventListener('click', () => {
+        topMenu.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const topMenu = document.getElementById('topMenu');
+    const scrollAmount = 150;
+
+    document.querySelector('.scroll-left').addEventListener('click', () => {
+        topMenu.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    document.querySelector('.scroll-right').addEventListener('click', () => {
+        topMenu.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+});
+</script>
+<script>
+    function enter_ursalf(){
+        document.getElementById("popup").style.display = "flex";
+    }
+    function openBox(){
+        document.getElementById("popup").style.display = "flex";
+    }
+    function closeBox(){
+        document.getElementById("popup").style.display = "none";
+    }
+    function saveMesage(){
+        const msg =
+        document.getElementById("message").value;
+        if(msg.trim() === ""){
+            alert("أكتب شيئا أولا");
+            return;
+        }
+        //save locale storage
+
+        localStorage.setItem("myMessage", msg);
+        alert("تم الحفض");
+        closeBox();
+      
+    }
+</script>
+
+<script>
+
+function botton_bordetr_00(){
+    const msg = localStorage.getItem("myMessage");
+
+    if(msg){
+        document.getElementById("savedText").innerText = msg;
+    }else{
+        document.getElementById("savedText").innerText = "لم تكتب رسالة بعد";
+    }
+
+    document.getElementById("popupShow").style.display = "flex";
+}
+
+function closeShow1(){
+    document.getElementById("popupShow").style.display = "none";
+}
+
+</script>
+
+
+</body>
+</html>

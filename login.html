@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar">
+    <head>
+        <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author"content="Houalla Mohmade">
+        <meta name="description"content="Intro Website">
+        <meta name="keywords"content="Programmation.........">
+        <meta name="robots"content="index,follow">
+        <meta property="og:image"content="image.jpeg">
+        <meta property="og:description"content="Intro website">
+        <meta property="og:tile"content="Programing_Campe">
+        <meta property="og:url"content="https://www.Programming_Campe.com">
+        <meta property="og:type"content="website">
+        <link rel="stylesheet" href="style_2.css?f=0677">
+        <title>log in</title>
+    </head>
+    <body>
+        <form class="login_1">
+            <h1> Log in</h1>
+            <label for="email">Enter email</label>
+            <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="email"
+            required>
+            <label for="password">Enter password</label>
+            <input 
+            type="password"
+            id="password"
+            name="password"
+            placeholder="password"
+            required>
+            <button
+            class="button_2"
+            onclick="login()">Enter</button>
+        </form>
+        <script>
+          
+function login() {
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+
+  fetch("http:// 127.0.0.1:8080/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password
+    })
+  })
+  .then(res => res.text())
+  .then(result => {
+    if (result === "OK") {
+      window.location.href = "gallery_1.html";
+    } else {
+      alert("Information Error");
+    }
+  })
+  .catch(err => {
+    alert("Server not running");
+  });
+}
+        </script>
+
+
+
+      
+    </body>
+</html>

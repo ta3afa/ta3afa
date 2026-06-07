@@ -1,0 +1,74 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background:linear-gradient(135deg,#bee728,hsl(27, 100%, 51%));
+}
+.background_bp7{
+    background-color:rgba(255, 255, 255, 0.37);
+    width:90%;
+    margin-left:5%;
+    height:550px;
+    margin-top:44px;
+    border-radius:20px;
+    
+
+}
+.h1{
+    text-align:center;
+    text-align:center;
+    font-family:'kufam',sans-serif;
+    font-weight:700;
+    font-size:40px;
+    color:#ff0404;
+}
+.h2{
+color:#ff04049a;
+text-align:center;
+font-size:26px;
+
+}
+.goals{
+margin-top:100px;
+
+}
+
+.goal{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:15px;
+margin-left:25%;
+}
+
+.plus{
+width:35px;
+height:35px;
+cursor:pointer;
+background-color:rgb(255, 217, 0);
+}
+
+.goal_input{
+
+display:none;
+width:80%   ;   
+height:35px;   
+background-color:rgba(255, 217, 0, 0);
+font-size:30px;
+border:none;
+
+}
+.goal input[type="checkbox"]{
+    width:20px;
+    height:20px;
+}
+.button{
+    margin-top:44px;
+    margin-left:40%;
+    width:20%;
+    height: 40px;
+    border-radius:20px;
+    font-size:20px;
+    background-color:rgb(255, 217, 0);
+}
