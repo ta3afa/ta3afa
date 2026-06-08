@@ -275,22 +275,25 @@ const app = initializeApp(firebaseConfig);
     });
   };
 
-  document.getElementById('loginBtn').addEventListener('click', function () {
-    this.innerHTML = '⏳ جاري تسجيل الدخول...';
-    this.style.opacity = '0.7';
-    this.style.pointerEvents = 'none';
+ document.getElementById('loginBtn').addEventListener('click', function () {
 
-    tokenClient.requestAccessToken({
-      prompt: "select_account"
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  auth.signInWithPopup(provider)
+    .then((result) => {
+      const user = result.user;
+      console.log(user);
+
+      document.getElementById('loginBtn').innerHTML =
+        "✅ مرحباً " + user.displayName;
+
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("خطأ في تسجيل الدخول");
     });
-  });
-  function openBox(id) {
-  document.getElementById(id).style.display = "flex";
-}
+});
 
-function closeBox(id) {
-  document.getElementById(id).style.display = "none";
-}
 </script>
 </body>
 </html>
