@@ -417,8 +417,8 @@ html, body{
 
 .menu-btn{
   position:fixed;
-  top:30px;
-  left:10px;
+  top:50px;
+  left:5px;
   z-index:1001;
   border:none;
   font-size:26px;
