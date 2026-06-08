@@ -249,13 +249,7 @@ const auth = firebase.auth();
 
   let tokenClient;
 
-  window.onload = function () {
-    tokenClient = google.accounts.oauth2.initTokenClient({
-      client_id: CLIENT_ID,
-      scope: "openid email profile",
-      callback: (response) => {
-        if (response.access_token) {
-          console.log("Access Token:", response.access_token);
+  
 
           // هنا يمكنك إرسال التوكن للسيرفر أو تسجيل الدخول
           document.getElementById('loginBtn').innerHTML = "✅ تم تسجيل الدخول";
