@@ -205,8 +205,8 @@ const auth = firebase.auth();
 
 function goTo(idx) {
 
-  // إيقاف التايمر
-  clearInterval(timer);
+  // حماية من نفس السلايد
+  if (idx === current) return;
 
   // إخفاء الحالي
   slides[current].classList.remove('active');
@@ -220,9 +220,6 @@ function goTo(idx) {
   slides[current].classList.add('active');
   bars[current].classList.add('active');
   pills[current].classList.add('active');
-
-  // إعادة تشغيل التايمر
-  startTimer();
 }
 
   function next() {
@@ -241,10 +238,10 @@ function goTo(idx) {
   }
 
   //
-  function startTimer() {
+function startTimer() {
+  clearInterval(timer);   // ⬅️ مهم
   timer = setInterval(next, 5000);
 }
-
 function openBox(id) {
   document.getElementById(id).style.display = "block";
 }
