@@ -197,30 +197,31 @@ const auth = firebase.auth();
 
 
   
-  const slides = document.querySelectorAll('.slide');
+const slides = document.querySelectorAll('.slide');
   const bars   = document.querySelectorAll('.prog-bar');
   const pills  = document.querySelectorAll('.feat-pill');
   let current = 0;
   let timer   = null;
 
-function goTo(idx) {
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    bars[current].classList.remove('active');
+    bars[current].classList.add('done');
+    pills[current].classList.remove('active');
 
-  // حماية من نفس السلايد
-  if (idx === current) return;
+    if (idx <= current) {
+      bars.forEach(b => b.classList.remove('active', 'done'));
+    }
 
-  // إخفاء الحالي
-  slides[current].classList.remove('active');
-  bars[current].classList.remove('active');
-  pills[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    bars[current].classList.remove('done');
+    bars[current].classList.add('active');
+    pills[current].classList.add('active');
 
-  // تحديث الرقم
-  current = idx;
-
-  // إظهار الجديد
-  slides[current].classList.add('active');
-  bars[current].classList.add('active');
-  pills[current].classList.add('active');
-}
+    clearInterval(timer);
+    startTimer();
+  }
 
   function next() {
     bars[current].classList.remove('active');
@@ -237,20 +238,10 @@ function goTo(idx) {
     pills[current].classList.add('active');
   }
 
-  //
-function startTimer() {
-  clearInterval(timer);   // ⬅️ مهم
-  timer = setInterval(next, 5000);
-}
-function openBox(id) {
-  document.getElementById(id).style.display = "block";
-}
+  function startTimer() { timer = setInterval(next, 5000); }
 
-function closeBox(id) {
-  document.getElementById(id).style.display = "none";
-}
-
-  
+  bars[0].classList.add('active');
+  startTimer();
 
   
 
