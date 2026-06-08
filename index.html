@@ -238,6 +238,19 @@ const auth = firebase.auth();
     pills[current].classList.add('active');
   }
 
+  //
+  function startTimer() {
+  timer = setInterval(next, 5000);
+}
+
+function openBox(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function closeBox(id) {
+  document.getElementById(id).style.display = "none";
+}
+
   
 
   
