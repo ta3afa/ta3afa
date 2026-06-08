@@ -203,25 +203,27 @@ const auth = firebase.auth();
   let current = 0;
   let timer   = null;
 
-  function goTo(idx) {
-    slides[current].classList.remove('active');
-    bars[current].classList.remove('active');
-    bars[current].classList.add('done');
-    pills[current].classList.remove('active');
+function goTo(idx) {
 
-    if (idx <= current) {
-      bars.forEach(b => b.classList.remove('active', 'done'));
-    }
+  // إيقاف التايمر
+  clearInterval(timer);
 
-    current = idx;
-    slides[current].classList.add('active');
-    bars[current].classList.remove('done');
-    bars[current].classList.add('active');
-    pills[current].classList.add('active');
+  // إخفاء الحالي
+  slides[current].classList.remove('active');
+  bars[current].classList.remove('active');
+  pills[current].classList.remove('active');
 
-    clearInterval(timer);
-    startTimer();
-  }
+  // تحديث الرقم
+  current = idx;
+
+  // إظهار الجديد
+  slides[current].classList.add('active');
+  bars[current].classList.add('active');
+  pills[current].classList.add('active');
+
+  // إعادة تشغيل التايمر
+  startTimer();
+}
 
   function next() {
     bars[current].classList.remove('active');
