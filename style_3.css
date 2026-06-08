@@ -418,7 +418,7 @@ html, body{
 .menu-btnv{
   position:fixed;
   top:20px;
-  left:10px;
+  left:0px;
   z-index:1001;
   border:none;
   font-size:26px;
