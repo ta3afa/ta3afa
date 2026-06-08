@@ -442,7 +442,7 @@ html, body{
 }
 
 .side-menu.open{
-  right:0;
+  left:0;
 }
 
 .user-box{
