@@ -265,20 +265,19 @@ document.getElementById('loginBtn').addEventListener('click', function () {
 
   const provider = new firebase.auth.GoogleAuthProvider();
 
-  auth.signInWithPopup(provider)
-    .then((result) => {
+auth.signInWithPopup(provider)
+  .then((result) => {
 
-      const user = result.user;
+    const user = result.user;
 
-      db.collection("users").doc(user.uid).set({
-        name: user.displayName,
-        email: user.email,
-        photo: user.photoURL,
-        createdAt:
-          firebase.firestore.fieldValue.serverTimestamp()
-      }, { merge: true });
+    db.collection("users").doc(user.uid).set({
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
 
-      console.log(user);
+    console.log("USER:", user);
 
       document.getElementById('loginBtn').innerHTML =
         "✅ مرحباً " + user.displayName;
