@@ -35,7 +35,7 @@ body{
 
 .background_01{
     position: absolute;
-    top:35%;
+    top:30%;
     left:50%;
     bottom:28%;
     
@@ -57,6 +57,7 @@ body{
 @media (max-width:767px){
     .background_01{
         left:70%;
+        top:40%;
     }
 }
 
