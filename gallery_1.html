@@ -47,8 +47,7 @@
     <h3 id="userName">المستخدم</h3>
     <p id="userEmail"></p>
   </div>
-
- <a href="#" onclick="showInfoBox()">ℹ️ من نحن</a>
+<a href="#" onclick="showInfoBox(); return false;">ℹ️ من نحن</a>
 
 <div id="infoBox" class="popup-box">
     <div class="popup-card">
@@ -59,7 +58,6 @@
         <p>
             معسكر التعافي منصة تهدف إلى مساعدة الأشخاص على تطوير أنفسهم
             وبناء عادات إيجابية من خلال خطوات صغيرة كل يوم.
-            نؤمن أن التغيير الحقيقي يبدأ بخطوات بسيطة ومستمرّة.
         </p>
     </div>
 </div>
@@ -418,14 +416,16 @@ const db = firebase.firestore();
 
 
 
-    function showInfoBox() {
+
+    <script>
+function showInfoBox() {
     document.getElementById("infoBox").style.display = "flex";
 }
 
 function hideInfoBox() {
     document.getElementById("infoBox").style.display = "none";
 }
-
+</script>
 
 
     
