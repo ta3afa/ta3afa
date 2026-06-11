@@ -48,7 +48,21 @@
     <p id="userEmail"></p>
   </div>
 
-  <a href="#">ℹ️ من نحن</a>
+ <a href="#" onclick="showInfoBox()">ℹ️ من نحن</a>
+
+<div id="infoBox" class="popup-box">
+    <div class="popup-card">
+        <span class="close-btn" onclick="hideInfoBox()">&times;</span>
+
+        <h2>من نحن</h2>
+
+        <p>
+            معسكر التعافي منصة تهدف إلى مساعدة الأشخاص على تطوير أنفسهم
+            وبناء عادات إيجابية من خلال خطوات صغيرة كل يوم.
+            نؤمن أن التغيير الحقيقي يبدأ بخطوات بسيطة ومستمرّة.
+        </p>
+    </div>
+</div>
 
 <a href="mailto:mohamediot7979@gmail.com">
 📧 اتصل بنا
@@ -402,6 +416,15 @@ const db = firebase.firestore();
 
 });
 
+
+
+    function showInfoBox() {
+    document.getElementById("infoBox").style.display = "flex";
+}
+
+function hideInfoBox() {
+    document.getElementById("infoBox").style.display = "none";
+}
 
 
 
