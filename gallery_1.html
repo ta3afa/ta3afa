@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar">
     <head>
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
         <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author"content="Houalla Mohmade">
@@ -341,6 +343,46 @@ const sideMenu = document.getElementById("sideMenu");
 menuBtn.addEventListener("click", () => {
   sideMenu.classList.toggle("open");
 });
+
+
+    auth.onAuthStateChanged((user) => {
+
+  if (user) {
+
+    document.getElementById("userName").textContent =
+      user.displayName;
+
+    document.getElementById("userEmail").textContent =
+      user.email;
+
+    document.getElementById("userPhoto").src =
+      user.photoURL;
+
+  } else {
+
+    window.location.href = "index.html";
+
+  }
+
+});
+
+
+
+    document.getElementById("logoutBtn")
+.addEventListener("click", () => {
+
+  auth.signOut().then(() => {
+
+    window.location.href = "index.html";
+
+  });
+
+});
+
+
+
+
+    
 
 
 </script>
