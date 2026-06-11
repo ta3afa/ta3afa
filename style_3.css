@@ -52,7 +52,7 @@ body{
 @media (max-width:768px){
     .background_01{
         left:60%;
-        top:10%;
+        bottom:35%;
     }
 }
 @media (max-width:767px){
