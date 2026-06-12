@@ -1,0 +1,79 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:linear-gradient(135deg,#bee728,hsl(27,100%,51%));
+    min-height:100vh;
+    font-family:'Kufam',sans-serif;
+}
+
+.background_bp4{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    padding:30px;
+    background:rgba(255,255,255,0.35);
+    backdrop-filter:blur(8px);
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.h1{
+    text-align:center;
+    color:#ff0404;
+    font-size:42px;
+    margin-bottom:40px;
+    text-shadow:2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* بطاقة المقولة */
+.quote-card{
+    background:white;
+    border-radius:20px;
+    padding:40px 30px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.quote-text{
+    font-size:32px;
+    line-height:1.8;
+    color:#333;
+}
+
+.quote-author{
+    display:block;
+    margin-top:25px;
+    color:#777;
+    font-size:20px;
+}
+
+/* الهواتف */
+@media (max-width:768px){
+
+    .background_bp4{
+        width:95%;
+        padding:20px;
+        margin:20px auto;
+    }
+
+    .h1{
+        font-size:32px;
+    }
+
+    .quote-card{
+        padding:25px 20px;
+    }
+
+    .quote-text{
+        font-size:22px;
+        line-height:1.7;
+    }
+
+    .quote-author{
+        font-size:18px;
+    }
+}
