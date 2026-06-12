@@ -1,53 +1,64 @@
 *{
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
-body{
-    background:linear-gradient(135deg,#bee728,hsl(27, 100%, 51%));
-}
-.background_bp2{
-    background-color:rgba(255, 255, 255, 0.37);
-    width:95%;
-    margin-left:2.5%;
-    height:550px;
-    margin-top:44px;
-    border-radius:20px;
-    
 
+body{
+    background:linear-gradient(135deg,#bee728,hsl(27,100%,51%));
+    min-height:100vh;
+    font-family:'Kufam',sans-serif;
 }
-.h1{
+
+/* البطاقة الرئيسية */
+.background_bp2{
+    background:rgba(255,255,255,0.35);
+    backdrop-filter:blur(8px);
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
     text-align:center;
-    font-family:'kufam',sans-serif;
-    font-weight:700;
+}
+
+/* العنوان */
+.h1{
     font-size:40px;
     color:#ff0404;
-
-    
+    text-shadow:2px 2px 5px rgba(0,0,0,0.2);
+    margin-bottom:40px;
 }
+
+/* الكتاب */
 .book{
-    width:20%;
-    margin-top:8%;
-    margin:0 0 20px 0;
-    
-}
-#book{
+    width:250px;
+    max-width:80%;
     cursor:pointer;
-
+    transition:0.4s;
+    filter:drop-shadow(0 10px 20px rgba(0,0,0,0.3));
 }
+
+.book:hover{
+    transform:translateY(-10px) scale(1.05);
+}
+
+/* الخلفية السوداء */
 #popup{
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.6);
+    background:rgba(0,0,0,0.7);
     display:none;
     justify-content:center;
     align-items:center;
     z-index:1000;
 }
 
-
+/* محتوى المكتبة */
 .popup-content{
     width:90%;
     max-width:1200px;
@@ -55,24 +66,86 @@ body{
     background:#fffef8;
     border-radius:20px;
     padding:20px;
-    text-align:center;
-    display: flex;
+    display:flex;
     flex-direction:column;
-    overflow:hidden;
-    
+    position:relative;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
 }
+
+/* النص */
 .popup-content p{
     flex:1;
     overflow-y:auto;
-    word-wrap:break-word;
-    overflow-wrap:break-word;
     white-space:pre-wrap;
-    font-size:26px;
+    font-size:24px;
+    line-height:1.8;
+    text-align:right;
+    padding:15px;
 }
+
+/* رمز الكتاب */
+.popup-content h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+/* زر الإغلاق */
 #close{
-    margin:-20px 100% 0 0;
-    width:10%;
-    height:35px;
-    font-size:30px;
-    background-color:#bee728;
+    position:absolute;
+    top:15px;
+    left:15px;
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:#bee728;
+    font-size:24px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#close:hover{
+    transform:scale(1.1);
+    background:#a4cf20;
+}
+
+/* الهواتف */
+@media (max-width:768px){
+
+    .background_bp2{
+        width:95%;
+        padding:20px;
+        margin:20px auto;
+    }
+
+    .h1{
+        font-size:30px;
+        line-height:1.5;
+    }
+
+    .book{
+        width:180px;
+    }
+
+    .popup-content{
+        width:95%;
+        height:92%;
+        padding:15px;
+    }
+
+    .popup-content p{
+        font-size:18px;
+        line-height:1.7;
+        padding:10px;
+    }
+
+    .popup-content h2{
+        font-size:32px;
+    }
+
+    #close{
+        width:40px;
+        height:40px;
+        font-size:20px;
+    }
 }
