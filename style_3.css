@@ -343,28 +343,26 @@ body{
 /* ========================= */
 /* SCENE */
 /* ========================= */
-/* ========================= */
-/* SCENE */
-/* ========================= */
-/* ========================= */
-/* SCENE */
-/* ========================= */
 
 .scene{
     position:relative;
+
     width:100%;
-    max-width:900px;
+    max-width:1000px;
+
     margin:auto;
+
+    padding-top:90px;
 }
 
 .platform{
-    position:relative;
     width:100%;
-    height:500px;
+    height:560px;
 
-    background-image:url("./base008.png");
-    background-size:cover;
-    background-position:center;
+    background-image:url("base008.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center bottom;
 }
 
 /* ========================= */
@@ -374,48 +372,20 @@ body{
 .background_01{
     position:absolute;
 
+    top:42%;
     left:50%;
-    top:50%;
 
-    /* الشخصية تبقى وسط المنصة */
-    transform:translate(-50%, -58%);
+    transform:translate(-50%,-50%);
 
-    width:80vw;
-    max-width:320px;
+    width:250px;
+    height:250px;
 
-    aspect-ratio:1/1;
-
-    z-index:2;
-    pointer-events:none;
+    z-index:10;
 }
-
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
-
-@media (max-width:820px){
-
-    .platform{
-        height:420px;
-    }
-
-    .background_01{
-        width:65vw;
-        max-width:260px;
-
-        /* نفس التموضع فالتلفون */
-        transform:translate(-50%, -58%);
-    }
-}
-
-/* ========================= */
-/* IMAGES */
-/* ========================= */
 
 .background_1,
 .background{
     position:absolute;
-    inset:0;
 
     width:100%;
     height:100%;
@@ -423,17 +393,10 @@ body{
     object-fit:contain;
 }
 
-/* ========================= */
-/* SHADOW */
-/* ========================= */
-
 .background{
     filter:brightness(0);
-    opacity:0.35;
-
-    /* الظل هابط شوية */
-    transform:translateY(12px);
 }
+
 /* ========================= */
 /* MAIN PANEL */
 /* ========================= */
