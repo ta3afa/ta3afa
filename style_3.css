@@ -377,15 +377,34 @@ body{
 .background_01{
     position:absolute;
 
-    top:42%;
     left:50%;
+    bottom:110px;
 
-    transform:translate(-50%,-50%);
+    transform:translateX(-50%);
 
     width:250px;
     height:250px;
 
     z-index:10;
+}
+
+@media (max-width:768px){
+
+    .platform{
+
+        height:420px;
+
+        background-size:100% auto;
+    }
+
+    .background_01{
+
+        bottom:85px;
+
+        width:180px;
+        height:180px;
+    }
+
 }
 
 /* ========================= */
