@@ -371,7 +371,6 @@ body{
 /* ========================= */
 /* MOBILE FIX */
 /* ========================= */
-
 @media (max-width:768px){
 
     .platform{
@@ -385,10 +384,10 @@ body{
 
     .background_01{
 
-        top:41%;
+        top:46%;
 
-        width:135px;
-        height:135px;
+        width:180px;
+        height:180px;
     }
 
 }
