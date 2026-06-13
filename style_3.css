@@ -368,7 +368,7 @@ body{
     position:absolute;
 
     left:50%;
-    bottom:8%; /* كيخليه واقف فوق platform */
+    bottom:15%; /* كيخليه واقف فوق platform */
 
     transform:translateX(-50%);
 
@@ -386,7 +386,7 @@ body{
     .background_01{
         width:65vw;
         max-width:260px;
-        bottom:10%;
+        bottom:15%;
     }
 }
 
