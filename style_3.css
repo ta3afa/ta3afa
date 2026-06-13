@@ -384,13 +384,23 @@ body{
 
     .background_01{
 
-        top:55%;
+        top:46%;
 
         width:180px;
         height:180px;
     }
 
 }
+
+@media (max-width:400px){
+
+    .background_01{
+
+        top:60%;
+    }
+
+}
+
 
 .background_1,
 .background{
