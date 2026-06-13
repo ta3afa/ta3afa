@@ -355,12 +355,6 @@ body{
     padding-top:90px;
 }
 
-
-
-/* ========================= */
-/* PLATFORM */
-/* ========================= */
-
 .platform{
     width:100%;
     height:560px;
@@ -370,6 +364,7 @@ body{
     background-repeat:no-repeat;
     background-position:center bottom;
 }
+
 /* ========================= */
 /* CHARACTER */
 /* ========================= */
@@ -377,10 +372,10 @@ body{
 .background_01{
     position:absolute;
 
+    top:42%;
     left:50%;
-    bottom:110px;
 
-    transform:translateX(-50%);
+    transform:translate(-50%,-50%);
 
     width:250px;
     height:250px;
@@ -390,46 +385,11 @@ body{
 
 @media (max-width:768px){
 
-    .platform{
-
-        height:420px;
-
-        background-size:100% auto;
-    }
-
     .background_01{
-
-        bottom:85px;
-
-        width:180px;
-        height:180px;
+        top:52%;
     }
 
 }
-
-/* ========================= */
-/* MOBILE FIX */
-/* ========================= */
-
-@media (max-width:768px){
-
-    .platform{
-
-        height:420px;
-
-        background-size:100% auto;
-    }
-
-
-@media (max-width:400px){
-
-    .background_01{
-
-        top:50%;
-    }
-
-}
-
 
 .background_1,
 .background{
@@ -647,57 +607,23 @@ body{
 /* ========================= */
 /* MOBILE */
 /* ========================= */
-/* ========================= */
-/* CHARACTER */
-/* ========================= */
-
-.background_01{
-    position:absolute;
-
-    top:42%;
-    left:50%;
-
-    transform:translate(-50%,-50%);
-
-    width:250px;
-    height:250px;
-
-    z-index:10;
-}
-
-/* ========================= */
-/* TABLET */
-/* ========================= */
 
 @media (max-width:768px){
 
+    .top-menu-container{
+        padding:10px 55px;
+    }
+
     .platform{
         height:420px;
-        background-size:100% auto;
-        background-position:center bottom;
     }
 
     .background_01{
-        top:45%;
         width:180px;
         height:180px;
+
+        top:45%;
     }
-
-}
-
-/* ========================= */
-/* SMALL PHONE */
-/* ========================= */
-
-@media (max-width:400px){
-
-    .background_01{
-        top:43%;
-        width:160px;
-        height:160px;
-    }
-
-}/ .background_01{ position:absolute; top:42%; left:50%; transform:translate(-50%,-50%); width:250px; height:250px; z-index:10; } @media (max-width:768px){ .background_01{ top:52%; } }
 
     .card-background{
         width:115px;
