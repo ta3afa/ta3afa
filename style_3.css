@@ -369,27 +369,24 @@ body{
 /* CHARACTER */
 /* ========================= */
 
-/* ========================= */
-/* MOBILE FIX */
-/* ========================= */
+.background_01{
+    position:absolute;
+
+    top:42%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:250px;
+    height:250px;
+
+    z-index:10;
+}
 
 @media (max-width:768px){
 
-    .platform{
-
-        height:420px;
-
-        background-size:100% auto;
-
-        background-position:center bottom;
-    }
-
     .background_01{
-
-        top:20%;
-
-        width:180px;
-        height:180px;
+        top:52%;
     }
 
 }
