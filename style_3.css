@@ -386,7 +386,13 @@ body{
 @media (max-width:768px){
 
     .background_01{
-        top:55%;
+
+        top:auto;
+        bottom:18%;
+
+        left:50%;
+
+        transform:translateX(-50%);
     }
 
 }
