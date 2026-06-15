@@ -418,10 +418,6 @@ body{
 
 }
 
-/* ========================= */
-/* CHARACTER */
-/* ========================= */
-
 
 
 .background_1,
@@ -493,6 +489,9 @@ body{
 
     transition:.25s;
 }
+
+
+
 
 .botton_border{
     background:
@@ -651,6 +650,7 @@ body{
         height:420px;
     }
 
+    
 
     .card-background{
         width:115px;
@@ -703,6 +703,6 @@ body{
         font-size:14px;
     }
 }
-
-
 /*sense*/
+
+
