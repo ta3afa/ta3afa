@@ -265,7 +265,7 @@ document.getElementById('loginBtn').addEventListener('click', function () {
 
   const provider = new firebase.auth.GoogleAuthProvider();
 
-auth.signInWithPopup(provider)
+auth.signInWithRedirect(provider)
   .then((result) => {
 
     const user = result.user;
@@ -291,12 +291,12 @@ auth.signInWithPopup(provider)
       window.location.href = "gallery_1.html";
 
     })
-    .catch((error) => {
+   .catch((error) => {
 
-      console.log(error);
-      alert("خطأ في تسجيل الدخول");
+  console.log(error);
+  alert(error.code);
 
-    });
+});
 
 });
 </script>
