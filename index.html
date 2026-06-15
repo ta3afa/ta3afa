@@ -271,11 +271,18 @@ auth.signInWithPopup(provider)
     const user = result.user;
 
     db.collection("users").doc(user.uid).set({
-      name: user.displayName,
-      email: user.email,
-      photo: user.photoURL,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    }, { merge: true });
+
+  name: user.displayName,
+  email: user.email,
+  photo: user.photoURL,
+
+  progress: 0,
+  level: 1,
+  message: "غادي نكمل ونتطور",
+
+  createdAt: firebase.firestore.FieldValue.serverTimestamp()
+
+}, { merge: true });
 
     console.log("USER:", user);
 
