@@ -263,17 +263,25 @@ auth.onAuthStateChanged((user) => {
 
   if (user) {
 
-    db.collection("users").doc(user.uid).set({
+    const userRef = db.collection("users").doc(user.uid);
 
-      name: user.displayName,
-      email: user.email,
-      photo: user.photoURL,
-      progress: 0,
-      level: 1,
-      message: "غادي نكمل ونتطور",
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    userRef.get().then((doc) => {
 
-    }, { merge: true });
+      if (!doc.exists) {
+
+        userRef.set({
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+          progress: 0,
+          level: 1,
+          message: "غادي نكمل ونتطور",
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+      }
+
+    });
 
     document.getElementById('loginBtn').innerHTML =
       "✅ مرحباً " + user.displayName;
