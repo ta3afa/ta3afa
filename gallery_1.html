@@ -201,23 +201,30 @@ function addToHistory(value){
 }
 
 /* ✅ عند التقدم */
-function progress(){
+async function progress(){
 
     // 📅 تاريخ اليوم
-    let today = new Date().toISOString().split("T")[0];
+  // 📅 تاريخ اليوم
+let today = new Date().toISOString().split("T")[0];
 
-    // 📦 آخر يوم ضغط فيه المستخدم
-    let lastClick = localStorage.getItem("lastProgressDate");
+// ✅ جلب بيانات المستخدم
+const docSnap = await db
+.collection("users")
+.doc(currentUser.uid)
+.get();
 
-    // ❌ إذا ضغط اليوم بالفعل → امنعه
-    if(lastClick === today){
-        alert("لقد ضغطت اليوم بالفعل، عد غدًا 👍");
-        return;
-    }
+const data = docSnap.data();
 
-    // ✅ نحفظ تاريخ اليوم
-    localStorage.setItem("lastProgressDate", today);
+// آخر ضغطة محفوظة
+let lastClick = data.lastProgressDate;
 
+// ❌ إذا ضغط اليوم بالفعل
+if(lastClick === today){
+
+    alert("لقد ضغطت اليوم بالفعل، عد غدًا 👍");
+
+    return;
+}
 
     // ===== كودك الأصلي بدون تغيير =====
     if(day < max){
@@ -247,6 +254,7 @@ db.collection("users")
 .update({
   day: day,
   displayDay: displayDay
+  lastProgressDate: today
 });
     }
 }
