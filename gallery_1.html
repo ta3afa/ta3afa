@@ -277,13 +277,28 @@ function resetAll(){
         p.innerText =`رائع أكملت ${savedDays} يوم حاول مجدا🚀️`;
 
         historyBox.appendChild(p); // سطر جديد فقط عند الأخطأ
-        
+        // حذف السطر الحالي
+let current =
+historyBox.querySelector(".current");
+
+if(current){
+    current.remove();
+}
     }
 
     // تصفير العداد
     day = 0;
     displayDay = 0;
     firstClick = true;
+    // ✅ حفظ التصفير في Firestore
+db.collection("users")
+.doc(currentUser.uid)
+.update({
+
+    day: 0,
+    displayDay: 0
+
+});
 
     daysSpan.innerText = displayDay;
     progressSpan.innerText = "0%";
