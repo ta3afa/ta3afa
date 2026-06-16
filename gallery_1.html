@@ -333,36 +333,74 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeBox(){
         document.getElementById("popup").style.display = "none";
     }
-    function saveMesage(){
-        const msg =
-        document.getElementById("message").value;
-        if(msg.trim() === ""){
-            alert("أكتب شيئا أولا");
-            return;
-        }
-        //save locale storage
+async function saveMesage(){
 
-        localStorage.setItem("myMessage", msg);
-        alert("تم الحفض");
-        closeBox();
-      
+    const msg =
+    document.getElementById("message").value;
+
+    if(msg.trim() === ""){
+        alert("أكتب شيئا أولا");
+        return;
     }
+
+    try{
+
+        await db.collection("users")
+        .doc(currentUser.uid)
+        .update({
+            myMessage: msg
+        });
+
+        alert("تم الحفظ");
+
+        closeBox();
+
+    }catch(error){
+
+        console.log(error);
+
+        alert("وقع خطأ");
+
+    }
+}
 </script>
 
 <script>
 
-function botton_bordetr_00(){
-    const msg = localStorage.getItem("myMessage");
+async function botton_bordetr_00(){
 
-    if(msg){
-        document.getElementById("savedText").innerText = msg;
-    }else{
-        document.getElementById("savedText").innerText = "لم تكتب رسالة بعد";
+    try{
+
+        const docSnap = await db
+        .collection("users")
+        .doc(currentUser.uid)
+        .get();
+
+        if(docSnap.exists){
+
+            const data = docSnap.data();
+
+            if(data.myMessage){
+
+                document.getElementById("savedText")
+                .innerText = data.myMessage;
+
+            }else{
+
+                document.getElementById("savedText")
+                .innerText = "لم تكتب رسالة بعد";
+            }
+        }
+
+        document.getElementById("popupShow")
+        .style.display = "flex";
+
+    }catch(error){
+
+        console.log(error);
+
     }
-
-    document.getElementById("popupShow").style.display = "flex";
 }
-
 function closeShow1(){
     document.getElementById("popupShow").style.display = "none";
 }
