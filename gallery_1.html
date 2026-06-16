@@ -429,15 +429,6 @@ function hideInfoBox() {
 
 
 
-auth.onAuthStateChanged((user) => {
-
-  if (!user) return; // ما تدير حتى حاجة
-
-  document.getElementById("userName").textContent = user.displayName;
-  document.getElementById("userEmail").textContent = user.email;
-  document.getElementById("userPhoto").src = user.photoURL;
-
-});
 
 
     
