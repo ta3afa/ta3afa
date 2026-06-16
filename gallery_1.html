@@ -241,6 +241,13 @@ function progress(){
             "inset(0 0 " + percent + "% 0)";
 
         addToHistory(displayDay);
+        // ✅ حفظ البيانات
+db.collection("users")
+.doc(currentUser.uid)
+.update({
+  day: day,
+  displayDay: displayDay
+});
     }
 }
 
@@ -248,6 +255,11 @@ function progress(){
 function addMistake(){
     mistakes += 1;
     mistakesSpan.innerText = mistakes;
+    db.collection("users")
+.doc(currentUser.uid)
+.update({
+  mistakes: mistakes
+});
 
     resetAll();
 }
@@ -376,12 +388,14 @@ firebase.initializeApp(firebaseConfig);
 // هذا مهم جداً 👇
 const auth = firebase.auth();
 const db = firebase.firestore();
+let currentUser = null;
 
 
-
-    auth.onAuthStateChanged((user) => {
+auth.onAuthStateChanged(async (user) => {
 
   if (user) {
+
+    currentUser = user;
 
     document.getElementById("userName").textContent =
       user.displayName;
@@ -391,6 +405,31 @@ const db = firebase.firestore();
 
     document.getElementById("userPhoto").src =
       user.photoURL;
+
+    
+    // ✅ جلب البيانات من Firestore
+    const docRef = db.collection("users").doc(user.uid);
+    const docSnap = await docRef.get();
+
+    if(docSnap.exists){
+
+      const data = docSnap.data();
+
+      day = data.day || 0;
+      displayDay = data.displayDay || 0;
+      mistakes = data.mistakes || 0;
+
+      daysSpan.innerText = displayDay;
+      mistakesSpan.innerText = mistakes;
+
+      let percent = (day / max) * 100;
+
+      progressSpan.innerText =
+      Math.floor(percent) + "%";
+
+      document.getElementById("shadow").style.clipPath =
+      "inset(0 0 " + percent + "% 0)";
+    }
 
   } else {
 
