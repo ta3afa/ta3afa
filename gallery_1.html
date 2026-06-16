@@ -182,22 +182,43 @@ let progressSpan = document.getElementById("days_1");
 let mistakesSpan = document.getElementById("days_2");
 
 let mistakes = 0;
+let historyList = [];
 
 /* ✅ السجل */
-function addToHistory(value){  
-    let historyBox = document.getElementById("historyBox");  
+async function addToHistory(value){
 
-    let current = historyBox.querySelector(".current");
+    let historyBox =
+    document.getElementById("historyBox");
 
-    // إنشاء سطر واحد فقط إذا لم يكن موجود
+    let current =
+    historyBox.querySelector(".current");
+
+    let text =
+    `⭐ هذا رائع! أكملت ${value} أيام`;
+
+    // إنشاء سطر واحد فقط
     if(!current){
+
         current = document.createElement("p");
+
         current.className = "current";
+
         historyBox.appendChild(current);
     }
 
-    // تحديث نفس السطر فقط
-    current.innerText =` ⭐ هذا رائع! أكملت ${value} أيام`;
+    current.innerText = text;
+
+    // ✅ حفظ في المصفوفة
+    historyList.push(text);
+
+    // ✅ حفظ في Firebase
+    await db.collection("users")
+    .doc(currentUser.uid)
+    .update({
+
+        history: historyList
+
+    });
 }
 
 /* ✅ عند التقدم */
@@ -284,7 +305,17 @@ function resetAll(){
         let p = document.createElement("p");
         p.innerText =`رائع أكملت ${savedDays} يوم حاول مجدا🚀️`;
 
-        historyBox.appendChild(p); // سطر جديد فقط عند الأخطأ
+        historyBox.appendChild(p); 
+        // ✅ حفظ السجل
+historyList.push(p.innerText);
+
+db.collection("users")
+.doc(currentUser.uid)
+.update({
+
+    history: historyList
+
+});// سطر جديد فقط عند الأخطأ
         // حذف السطر الحالي
 let current =
 historyBox.querySelector(".current");
@@ -479,9 +510,26 @@ auth.onAuthStateChanged(async (user) => {
       day = data.day || 0;
       displayDay = data.displayDay || 0;
       mistakes = data.mistakes || 0;
+      historyList = data.history || [];
 
       daysSpan.innerText = displayDay;
       mistakesSpan.innerText = mistakes;
+      // ✅ عرض السجل
+let historyBox =
+document.getElementById("historyBox");
+
+historyBox.innerHTML = "";
+
+historyList.forEach(item => {
+
+    let p =
+    document.createElement("p");
+
+    p.innerText = item;
+
+    historyBox.appendChild(p);
+
+});
 
       let percent = (day / max) * 100;
 
