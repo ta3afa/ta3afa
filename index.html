@@ -257,58 +257,45 @@ function closeBox(id) {
   
 
 
-  
-  
-
-// التحقق من نتيجة تسجيل الدخول بعد الرجوع من Google
-auth.getRedirectResult()
-  .then((result) => {
-
-    if (result.user) {
-
-      const user = result.user;
-
-      db.collection("users").doc(user.uid).set({
-
-        name: user.displayName,
-        email: user.email,
-        photo: user.photoURL,
-
-        progress: 0,
-        level: 1,
-        message: "غادي نكمل ونتطور",
-
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-
-      }, { merge: true })
-      .then(() => {
-
-        console.log("USER:", user);
-
-        document.getElementById('loginBtn').innerHTML =
-          "✅ مرحباً " + user.displayName;
-
-        window.location.href = "gallery_1.html";
-
-      });
-
-    }
-
-  })
-  .catch((error) => {
-
-    console.log(error);
-    alert(error.code);
-
-  });
-
-
-// الضغط على زر تسجيل الدخول
+  // تسجيل الدخول
 document.getElementById('loginBtn').addEventListener('click', function () {
 
   const provider = new firebase.auth.GoogleAuthProvider();
-
   auth.signInWithRedirect(provider);
+
+});
+
+
+// هذا هو الحل الصحيح 👇
+auth.onAuthStateChanged((user) => {
+
+  if (user) {
+
+    db.collection("users").doc(user.uid).set({
+
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL,
+
+      progress: 0,
+      level: 1,
+      message: "غادي نكمل ونتطور",
+
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+
+    }, { merge: true }).then(() => {
+
+      document.getElementById('loginBtn').innerHTML =
+        "✅ مرحباً " + user.displayName;
+
+      // نخليه غير بعد ما يتأكد login
+      setTimeout(() => {
+        window.location.href = "gallery_1.html";
+      }, 500);
+
+    });
+
+  }
 
 });
 </script>
