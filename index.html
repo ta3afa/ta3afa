@@ -268,23 +268,15 @@ auth.onAuthStateChanged((user) => {
       name: user.displayName,
       email: user.email,
       photo: user.photoURL,
-
       progress: 0,
       level: 1,
       message: "غادي نكمل ونتطور",
-
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
 
-    }, { merge: true }).then(() => {
+    }, { merge: true });
 
-      document.getElementById('loginBtn').innerHTML =
-        "✅ مرحباً " + user.displayName;
-
-      setTimeout(() => {
-        window.location.href = "gallery_1.html";
-      }, 700);
-
-    });
+    document.getElementById('loginBtn').innerHTML =
+      "✅ مرحباً " + user.displayName;
 
   }
 
