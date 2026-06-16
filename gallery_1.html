@@ -438,10 +438,16 @@ auth.onAuthStateChanged((user) => {
   document.getElementById("userPhoto").src = user.photoURL;
 
 });
+
+
     
 
 
-
+auth.getRedirectResult().then((result) => {
+  if (result.user) {
+    window.location.href = "gallery_1.html";
+  }
+});
     
 
 
