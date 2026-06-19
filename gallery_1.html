@@ -186,8 +186,6 @@ let mistakes = 0;
 /* ✅ السجل */
 function addToHistory(value){  
 
-    if(!currentUser) return; // 🔥 حماية مهمة
-
     let historyItem = {
         text: `⭐ رائع أكملت ${value} يوم`,
         date: new Date().toISOString()
@@ -197,7 +195,7 @@ function addToHistory(value){
     .doc(currentUser.uid)
     .set({
         history: firebase.firestore.FieldValue.arrayUnion(historyItem)
-    }, { merge: true }); // 🔥 مهم جداً
+    }, { merge: true });
 
     let historyBox = document.getElementById("historyBox");  
     let p = document.createElement("p");
@@ -458,68 +456,59 @@ let currentUser = null;
 
 auth.onAuthStateChanged(async (user) => {
 
-  if (user) {
-
-    currentUser = user;
-
-    document.getElementById("userName").textContent =
-      user.displayName;
-
-    document.getElementById("userEmail").textContent =
-      user.email;
-
-    document.getElementById("userPhoto").src =
-      user.photoURL;
-
-    
-    // ✅ جلب البيانات من Firestore
-    const docRef = db.collection("users").doc(user.uid);
-    const docSnap = await docRef.get();
-
-    if(docSnap.exists){
-
-      const data = docSnap.data();
-
-      day = data.day || 0;
-      displayDay = data.displayDay || 0;
-      mistakes = data.mistakes || 0;
-
-      daysSpan.innerText = displayDay;
-      mistakesSpan.innerText = mistakes;
-
-      let percent = (day / max) * 100;
-
-      progressSpan.innerText =
-      Math.floor(percent) + "%";
-
-      document.getElementById("shadow").style.clipPath =
-      "inset(0 0 " + percent + "% 0)";
-    }
-
-  } else {
-
+  if (!user) {
     window.location.href = "index.html";
-
+    return;
   }
-    const docRef = db.collection("users").doc(user.uid);
-const docSnap = await docRef.get();
 
-if(!docSnap.exists){
+  currentUser = user;
+
+  document.getElementById("userName").textContent = user.displayName;
+  document.getElementById("userEmail").textContent = user.email;
+  document.getElementById("userPhoto").src = user.photoURL;
+
+  const docRef = db.collection("users").doc(user.uid);
+  const docSnap = await docRef.get();
+
+  // 🔥 إذا ما كاينش user data
+  if (!docSnap.exists) {
     await docRef.set({
-        day: 0,
-        displayDay: 0,
-        mistakes: 0,
-        history: []
+      day: 0,
+      displayDay: 0,
+      mistakes: 0,
+      history: []
     });
-}
+  }
 
-    const history = (data && data.history) ? data.history : [];
+  const data = docSnap.exists ? docSnap.data() : {
+    day: 0,
+    displayDay: 0,
+    mistakes: 0,
+    history: []
+  };
 
-history.forEach(item => {
+  day = data.day;
+  displayDay = data.displayDay;
+  mistakes = data.mistakes;
+
+  daysSpan.innerText = displayDay;
+  mistakesSpan.innerText = mistakes;
+
+  let percent = (day / max) * 100;
+
+  progressSpan.innerText = Math.floor(percent) + "%";
+
+  document.getElementById("shadow").style.clipPath =
+    "inset(0 0 " + percent + "% 0)";
+
+  // 🔥 HISTORY هنا الصحيح
+  const history = data.history || [];
+
+  history.forEach(item => {
     let p = document.createElement("p");
     p.innerText = item.text;
     document.getElementById("historyBox").appendChild(p);
-});
+  });
 
 });
 
