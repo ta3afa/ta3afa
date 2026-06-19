@@ -185,21 +185,24 @@ let mistakes = 0;
 
 /* ✅ السجل */
 function addToHistory(value){  
+
+    let historyItem = {
+        text: `⭐ رائع أكملت ${value} يوم`,
+        date: new Date().toISOString()
+    };
+
+    db.collection("users")
+    .doc(currentUser.uid)
+    .update({
+        history: firebase.firestore.FieldValue.arrayUnion(historyItem)
+    });
+
+    // عرض فالشاشة
     let historyBox = document.getElementById("historyBox");  
-
-    let current = historyBox.querySelector(".current");
-
-    // إنشاء سطر واحد فقط إذا لم يكن موجود
-    if(!current){
-        current = document.createElement("p");
-        current.className = "current";
-        historyBox.appendChild(current);
-    }
-
-    // تحديث نفس السطر فقط
-    current.innerText =` ⭐ هذا رائع! أكملت ${value} أيام`;
+    let p = document.createElement("p");
+    p.innerText = historyItem.text;
+    historyBox.appendChild(p);
 }
-
 /* ✅ عند التقدم */
 async function progress(){
 
@@ -497,6 +500,14 @@ auth.onAuthStateChanged(async (user) => {
     window.location.href = "index.html";
 
   }
+
+    const history = data.history || [];
+
+history.forEach(item => {
+    let p = document.createElement("p");
+    p.innerText = item.text;
+    document.getElementById("historyBox").appendChild(p);
+});
 
 });
 
