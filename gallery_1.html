@@ -186,6 +186,8 @@ let mistakes = 0;
 /* ✅ السجل */
 function addToHistory(value){  
 
+    if(!currentUser) return; // 🔥 حماية مهمة
+
     let historyItem = {
         text: `⭐ رائع أكملت ${value} يوم`,
         date: new Date().toISOString()
@@ -193,11 +195,10 @@ function addToHistory(value){
 
     db.collection("users")
     .doc(currentUser.uid)
-    .update({
+    .set({
         history: firebase.firestore.FieldValue.arrayUnion(historyItem)
-    });
+    }, { merge: true }); // 🔥 مهم جداً
 
-    // عرض فالشاشة
     let historyBox = document.getElementById("historyBox");  
     let p = document.createElement("p");
     p.innerText = historyItem.text;
@@ -500,8 +501,19 @@ auth.onAuthStateChanged(async (user) => {
     window.location.href = "index.html";
 
   }
+    const docRef = db.collection("users").doc(user.uid);
+const docSnap = await docRef.get();
 
-    const history = data.history || [];
+if(!docSnap.exists){
+    await docRef.set({
+        day: 0,
+        displayDay: 0,
+        mistakes: 0,
+        history: []
+    });
+}
+
+    const history = (data && data.history) ? data.history : [];
 
 history.forEach(item => {
     let p = document.createElement("p");
