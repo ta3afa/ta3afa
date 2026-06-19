@@ -186,16 +186,23 @@ let mistakes = 0;
 /* ✅ السجل */
 function addToHistory(value){  
 
+    if(!currentUser) return;
+
     let historyItem = {
         text: `⭐ رائع أكملت ${value} يوم`,
         date: new Date().toISOString()
     };
 
-    db.collection("users")
-    .doc(currentUser.uid)
-    .set({
+    const docRef = db.collection("users").doc(currentUser.uid);
+
+    docRef.update({
         history: firebase.firestore.FieldValue.arrayUnion(historyItem)
-    }, { merge: true });
+    }).catch(() => {
+        // إذا ما كانش doc
+        docRef.set({
+            history: [historyItem]
+        }, { merge: true });
+    });
 
     let historyBox = document.getElementById("historyBox");  
     let p = document.createElement("p");
