@@ -22,6 +22,9 @@
 </head>
 
 <body>
+ <div id="successMessage" class="success-message">
+🎉 أحسنت! لقد أكملت مهامك اليوم
+</div>
 
 
 
@@ -78,6 +81,57 @@ input.style.display = "flex";
 });
 
 });
+
+
+ <script>
+
+const completeBtn = document.querySelector(".button");
+
+completeBtn.addEventListener("click", () => {
+
+const goals = document.querySelectorAll(".goal");
+
+let hasGoal = false;
+let allCompleted = true;
+
+goals.forEach(goal => {
+
+const input = goal.querySelector(".goal_input");
+const checkbox = goal.querySelector('input[type="checkbox"]');
+
+if(input.value.trim() !== ""){
+
+hasGoal = true;
+
+if(!checkbox.checked){
+allCompleted = false;
+}
+
+}
+
+});
+
+if(!hasGoal){
+alert("أضف هدفاً واحداً على الأقل");
+return;
+}
+
+if(!allCompleted){
+alert("قم بتعليم جميع المهام المكتملة");
+return;
+}
+
+const message = document.getElementById("successMessage");
+
+message.style.display = "block";
+
+setTimeout(() => {
+message.style.display = "none";
+}, 3000);
+
+});
+
+</script>
 
 </script>
 
