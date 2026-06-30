@@ -1,1 +1,17 @@
-
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+<title>logo camp-ta3afi.com - bla ktaba</title>
+<rect width="300" height="300" fill="#ffffff"/>
+ 
+<g transform="translate(150,150)">
+<circle cx="0" cy="0" r="120" fill="none" stroke="#2f6b4f" stroke-width="3"/>
+<path d="M0,60 C0,60 -6,5 0,-25 C6,5 0,60 0,60 Z" fill="#2f6b4f"/>
+<path d="M0,-15 C-45,-15 -52,-55 -28,-78 C-8,-85 8,-60 0,-15 Z" fill="#3d8159"/>
+<path d="M0,-8 C45,-8 52,-48 28,-71 C8,-78 -8,-53 0,-8 Z" fill="#5a9d6f"/>
+<path d="M0,5 C-32,5 -40,38 -22,57 C-4,64 6,38 0,5 Z" fill="#7fbe8f"/>
+<path d="M0,12 C30,12 38,42 20,58 C2,64 -6,40 0,12 Z" fill="#a3d6ad"/>
+<circle cx="0" cy="-45" r="3" fill="#f0c75e"/>
+<circle cx="-18" cy="-25" r="3" fill="#f0c75e"/>
+<circle cx="16" cy="-18" r="3" fill="#f0c75e"/>
+</g>
+</svg>
+ 
