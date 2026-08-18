@@ -1,351 +1,123 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
- 
-<!-- ============================== -->
-<!-- Firebase Scripts               -->
-<!-- ============================== -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
- 
- 
-<!-- ============================== -->
-<!-- Encoding & Viewport            -->
-<!-- ============================== -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
- 
-<!-- ============================== -->
-<!-- Primary SEO Tags               -->
-<!-- ============================== -->
-<title>تسجيل الدخول | معسكر التعافي</title>
- 
-<meta name="description"
-content="سجّل الدخول إلى حسابك في معسكر التعافي للوصول إلى أدواتك، تقدمك، وموسوعة التعافي الكاملة. ابدأ أو تابع رحلتك نحو حياة أفضل.">
- 
-<meta name="robots" content="index,follow">
- 
-<meta name="author" content="معسكر التعافي">
- 
-<link rel="canonical"
-href="https://camp-ta3afi.com/index.html">
- 
- 
-<!-- ============================== -->
-<!-- Open Graph (Facebook/WhatsApp)  -->
-<!-- ============================== -->
-<meta property="og:title" content="تسجيل الدخول | معسكر التعافي">
-<meta property="og:description" content="سجّل الدخول إلى حسابك في معسكر التعافي وتابع رحلتك نحو حياة أفضل.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://camp-ta3afi.com/">
-<meta property="og:image" content="https://camp-ta3afi/assets/og-image.png">
-<meta property="og:locale" content="ar_AR">
-<meta property="og:site_name" content="معسكر التعافي">
- 
- 
-<!-- ============================== -->
-<!-- Twitter Card                   -->
-<!-- ============================== -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="تسجيل الدخول | معسكر التعافي">
-<meta name="twitter:description" content="سجّل الدخول إلى حسابك في معسكر التعافي وتابع رحلتك نحو حياة أفضل.">
-<meta name="twitter:image" content="https://camp-ta3afi/assets/og-image.png">
- 
- 
-<!-- ============================== -->
-<!-- Theme & Icons                  -->
-<!-- ============================== -->
-<meta name="theme-color" content="#0d1b2a">
-
-<link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
-<link rel="apple-touch-icon" href="/assets/logo.svg">
- 
- 
-<!-- ============================== -->
-<!-- Stylesheet                     -->
-<!-- ============================== -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>معسكر التعافي — ابدأ رحلتك نحو نسخة أهدأ منك</title>
+<meta name="description" content="مساحة عربية تساعدك على التنفس، تنظيم يومك، التعبير عما تشعر به، واكتشاف مكتبة تعافي كاملة. تصفح بدون تسجيل، وابدأ حين تشعر أنك جاهز.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style_11.css">
- 
- 
 </head>
 <body>
 
-<div class="wrap">
+<header><div class="wrap nav">
+  <a class="logo" href="#">
+    <span class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3c3 3 5 6 5 9a5 5 0 0 1-10 0c0-3 2-6 5-9Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </span>
+    <span>معسكر التعافي</span>
+  </a>
+  <button class="login-btn" onclick="openLogin()">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    تسجيل الدخول
+  </button>
+</div></header>
 
-  <!-- BRAND -->
-  <div class="brand">
-    <div class="brand-icon">🌿</div>
-    <div class="brand-name">نسختك الأفضل</div>
-    <div class="brand-sub">your better self</div>
-  </div>
+<main>
+  <section class="hero"><div class="wrap">
+    <span class="badge"><span class="dot"></span> مساحة مفتوحة للجميع، بدون تسجيل إجباري</span>
+    <h1>رحلتك نحو <em>نسخة أهدأ</em> منك تبدأ هنا</h1>
+    <p class="intro">أدوات بسيطة تساعدك تفهم نفسك، تنظّم يومك، وتعبّر عمّا بداخلك — خطوة بخطوة، بالوقت اللي يناسبك.</p>
+    <p class="note">جرّب الموقع أولاً. تسجيل الدخول يبقى اختياريًا، ويُستعمل فقط لحفظ تقدّمك الشخصي.</p>
 
-  <!-- LOGIN CARD -->
-  <div class="login-card">
-    <div class="login-title">مرحباً بك في الموقع 👋</div>
-    <div class="login-sub">سجّل دخولك وابدأ رحلتك نحو النسخة الأفضل منك</div>
-
-    <button class="google-btn" id="loginBtn">
-      <svg class="g-logo" viewBox="0 0 24 24">
-        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-      </svg>
-      تسجيل الدخول عبر Google
+    <button class="discover-cue" onclick="document.getElementById('toolsSection').scrollIntoView({behavior:'smooth'})">
+      اكتشف أدواتك
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
+  </div></section>
 
-    <div class="privacy">
-     بالمتابعة توافق على 
-  <a href="#" onclick="openBox('privacyBox')">سياسة الخصوصية</a> و
-  <a href="#" onclick="openBox('termsBox')">شروط الاستخدام</a>
-</div>
-
-  </div>
-
-  <!-- LABEL -->
-  <div class="section-label">ما ينتظرك بعد الدخول</div>
-
-  <!-- FEATURE PILLS -->
-  <div class="feat-row">
-    <div class="feat-pill active" onclick="goTo(0)">
-      <span class="feat-emoji">🧘</span>
-      <span class="feat-name">تنفس</span>
+  <section class="section" id="toolsSection" style="padding-top:6px"><div class="wrap">
+    <div class="head">
+      <div class="eyebrow">أدواتك</div>
+      <h2>خمس أدوات، خطوة واحدة كل مرة</h2>
+      <p>اضغط على أي أداة لتجربتها مباشرة</p>
     </div>
-    <div class="feat-pill" onclick="goTo(1)">
-      <span class="feat-emoji">🎯</span>
-      <span class="feat-name">أهداف</span>
+
+    <div class="tools">
+
+      <a class="tool" href="#" onclick="demo(event,'خذ نفس')">
+        <span class="sticker breath">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12c2-4 6-6 8-6s6 2 8 6c-2 4-6 6-8 6s-6-2-8-6Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <span class="main-t"><h3>خذ نفس</h3><p>تمرين قصير للتوقف لحظة واستعادة الهدوء والتركيز.</p></span>
+        <span class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <a class="tool" href="#" onclick="demo(event,'رتّب يومك')">
+        <span class="sticker goals">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 6h10M9 12h10M9 18h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="m4 6 1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="main-t"><h3>رتّب يومك</h3><p>خطوات بسيطة تساعدك تنظّم أهدافك اليومية بدون ضغط.</p></span>
+        <span class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <a class="tool" href="#" onclick="demo(event,'مذكرتي')">
+        <span class="sticker diary">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 10h6M9 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <span class="main-t"><h3>مذكرتي</h3><p>مساحتك الآمنة والخاصة للكتابة عمّا تشعر به.</p></span>
+        <span class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <a class="tool" href="encyclopedia.html">
+        <span class="sticker library">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5v-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="main-t"><h3>مكتبة التعافي</h3><p>موسوعة مقالات مفتوحة للجميع تضيء طريقك نحو نفسك.</p></span>
+        <span class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <a class="tool" href="gallery_1.html">
+        <span class="sticker dash">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 20V10M12 20V4M19 20v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <span class="main-t"><h3>لوحة تحكم</h3><p>تابع تقدّمك ومستواك بعد تسجيل الدخول.</p></span>
+        <span class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
     </div>
-    <div class="feat-pill" onclick="goTo(2)">
-      <span class="feat-emoji">📓</span>
-      <span class="feat-name">مذكرة</span>
+
+    <div class="info">
+      <h3>خذ وقتك</h3>
+      <p>ما كاين حتى استعجال. جرّب الأدوات، وسجّل الدخول فقط يوم تحتاج تحفظ وتتابع معلوماتك.</p>
     </div>
-    <div class="feat-pill" onclick="goTo(3)">
-      <span class="feat-emoji">📚</span>
-      <span class="feat-name">مكتبة</span>
-    </div>
-  </div>
+  </div></section>
+</main>
 
-  <!-- PHONE -->
-  <div class="phone-wrap">
-    <div class="phone-frame">
-      <div class="slides">
+<footer>© معسكر التعافي — كل الحقوق محفوظة</footer>
 
-        <!-- Slide 1: Breath -->
-        <div class="slide slide-breath active">
-          <span class="slide-tag">تمرين يومي</span>
-          <div class="breath-orb"></div>
-          <div class="slide-title">خذ نفساً</div>
-          <div class="slide-desc">شهيق... زفير...<br>دقيقتان تغيّران يومك كله</div>
-        </div>
-
-        <!-- Slide 2: Goals -->
-        <div class="slide slide-goals">
-          <span class="slide-tag">تنظيم اليوم</span>
-          <div class="slide-title">رتّب أهدافك</div>
-          <div class="goal-items">
-            <div class="goal-item">
-              <div class="goal-check done">✓</div>
-              <div class="goal-text">قراءة 15 دقيقة</div>
-            </div>
-            <div class="goal-item">
-              <div class="goal-check done">✓</div>
-              <div class="goal-text">تمرين الصباح</div>
-            </div>
-            <div class="goal-item">
-              <div class="goal-check undone"></div>
-              <div class="goal-text">كتابة مذكرتي</div>
-            </div>
-          </div>
-          <div class="slide-desc">مقولة اليوم تنتظرك كل صباح ☀️</div>
-        </div>
-
-        <!-- Slide 3: Diary -->
-        <div class="slide slide-diary">
-          <span class="slide-tag">مذكرتي السرية</span>
-          <div class="diary-book">📓</div>
-          <div class="slide-title">اعترف بما بداخلك</div>
-          <div class="diary-lines">
-            <div class="diary-line"></div>
-            <div class="diary-line"></div>
-            <div class="diary-line"></div>
-            <div class="diary-line"></div>
-          </div>
-          <div class="slide-desc">مساحتك الآمنة للتعبير عن نفسك</div>
-        </div>
-
-        <!-- Slide 4: Library -->
-        <div class="slide slide-lib">
-          <span class="slide-tag">مكتبة التعافي</span>
-          <div class="lib-sparkle">✨</div>
-          <div class="lib-shelf">
-            <div class="lib-book">التعافي</div>
-            <div class="lib-book">السلام</div>
-            <div class="lib-book">الذات</div>
-            <div class="lib-book">الأمل</div>
-            <div class="lib-book">النمو</div>
-          </div>
-          <div class="lib-shelf-base"></div>
-          <div class="slide-title">مكتبة التعافي</div>
-          <div class="slide-desc">كتب ومقالات تُضيء طريقك<br>نحو نفسك 🌱</div>
-        </div>
-
-      </div>
-
-      <!-- Progress bars -->
-      <div class="slide-progress">
-        <div class="prog-bar active" onclick="goTo(0)"></div>
-        <div class="prog-bar" onclick="goTo(1)"></div>
-        <div class="prog-bar" onclick="goTo(2)"></div>
-        <div class="prog-bar" onclick="goTo(3)"></div>
-      </div>
-    </div>
-  </div>
-
-</div>
-<!-- Privacy Box -->
-<div id="privacyBox" class="popup-box">
-  <div class="popup-content">
-    <span onclick="closeBox('privacyBox')" class="close">✖</span>
-    <h3>سياسة الخصوصية</h3>
-    <p>
-      نحن نجمع بيانات Google الأساسية (الاسم والإيميل) فقط لتسجيل الدخول،
-      ولا نشاركها مع أي طرف ثالث.
-    </p>
+<div class="modal" id="m" onclick="closeLogin(event)">
+  <div class="box">
+    <h3>تسجيل الدخول</h3>
+    <p id="modalText">هذا نموذج تجريبي. في الموقع الحقيقي سيبقى نظام تسجيل الدخول عبر Google، دون أن يكون إجباريًا لتصفح الموقع.</p>
+    <div class="actions"><button class="btn btn-main" onclick="closeLogin()">حسنًا</button></div>
   </div>
 </div>
 
-<!-- Terms Box -->
-<div id="termsBox" class="popup-box">
-  <div class="popup-content">
-    <span onclick="closeBox('termsBox')" class="close">✖</span>
-    <h3>شروط الاستخدام</h3>
-    <p>
-      باستخدامك للموقع أنت توافق على الاستخدام الآمن وعدم إساءة استعمال الخدمة.
-    </p>
-  </div>
-</div>
-  <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyASJCSX74_gVGQ_zzROpgFZPSGC5mecLss",
-  authDomain: "ta3afa-f5e9d.firebaseapp.com",
-  projectId: "ta3afa-f5e9d",
-  storageBucket: "ta3afa-f5e9d.appspot.com",
-  messagingSenderId: "1039885292105",
-  appId: "1:1039885292105:web:dcfe9202ecb6cc98dfa598"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-// Firebase refs
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-
-// =====================
-// SLIDER (خليه كيف هو)
-// =====================
-const slides = document.querySelectorAll('.slide');
-const bars = document.querySelectorAll('.prog-bar');
-const pills = document.querySelectorAll('.feat-pill');
-let current = 0;
-let timer = null;
-
-function goTo(idx) {
-  slides[current].classList.remove('active');
-  bars[current].classList.remove('active');
-  bars[current].classList.add('done');
-  pills[current].classList.remove('active');
-
-  if (idx <= current) {
-    bars.forEach(b => b.classList.remove('active', 'done'));
-  }
-
-  current = idx;
-  slides[current].classList.add('active');
-  bars[current].classList.remove('done');
-  bars[current].classList.add('active');
-  pills[current].classList.add('active');
-
-  clearInterval(timer);
-  startTimer();
-}
-
-function next() {
-  bars[current].classList.remove('active');
-  bars[current].classList.add('done');
-  slides[current].classList.remove('active');
-  pills[current].classList.remove('active');
-
-  current = (current + 1) % slides.length;
-
-  if (current === 0) bars.forEach(b => b.classList.remove('active', 'done'));
-
-  slides[current].classList.add('active');
-  bars[current].classList.add('active');
-  pills[current].classList.add('active');
-}
-
-function startTimer() {
-  timer = setInterval(next, 5000);
-}
-
-bars[0].classList.add('active');
-startTimer();
-
-function openBox(id) {
-  document.getElementById(id).style.display = "block";
-}
-
-function closeBox(id) {
-  document.getElementById(id).style.display = "none";
+<script>
+function openLogin(){document.getElementById('modalText').textContent =
+  'هذا نموذج تجريبي. في الموقع الحقيقي سيبقى نظام تسجيل الدخول عبر Google، دون أن يكون إجباريًا لتصفح الموقع.';
+  document.getElementById('m').classList.add('open')}
+function closeLogin(e){if(!e || e.target.id==='m' || e.currentTarget===undefined)document.getElementById('m').classList.remove('open')}
+function demo(e,name){
+  e.preventDefault();
+  document.getElementById('modalText').textContent = 'نموذج تجريبي: هنا غادي نربط صفحة "'+name+'" بالأداة الحقيقية ديالها.';
+  document.getElementById('m').classList.add('open');
 }
 
 
-// =====================
-// LOGIN (FIXED)
-// =====================
-
-document.getElementById('loginBtn').addEventListener('click', function () {
-
-  const provider = new firebase.auth.GoogleAuthProvider();
-
-auth.signInWithPopup(provider)
-  .then((result) => {
-
-    const user = result.user;
-
-    db.collection("users").doc(user.uid).set({
-
-  name: user.displayName,
-  email: user.email,
-  photo: user.photoURL,
-
-  progress: 0,
-  level: 1,
-  message: "غادي نكمل ونتطور",
-
-  createdAt: firebase.firestore.FieldValue.serverTimestamp()
-
-}, { merge: true });
-
-    console.log("USER:", user);
-
-      document.getElementById('loginBtn').innerHTML =
-        "✅ مرحباً " + user.displayName;
-      window.location.href = "gallery_1.html";
-
-    })
-    .catch((error) => {
-
-      console.log(error);
-      alert("خطأ في تسجيل الدخول");
-
-    });
-
-});
-  </script>
+</script>
 </body>
 </html>
