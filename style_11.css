@@ -168,7 +168,7 @@ h1 em{font-style:normal;color:var(--brand)}
 .quote-day{
   width:min(700px,100%);margin:0 auto 12px;
   display:flex;align-items:flex-start;gap:14px;
-  background:#D98B62!important;
+  background:#D98B62;
 border:1px solid #C2D8C8;
 color:var(--ink);
   border-radius:18px;padding:16px 18px;
