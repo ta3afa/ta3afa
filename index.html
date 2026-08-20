@@ -1,18 +1,67 @@
-
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
+
+<!-- ============================== -->
+<!-- Firebase Scripts               -->
+<!-- ============================== -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>معسكر التعافي — معاينة</title>
+
+<title>معسكر التعافي — رحلتك نحو التغيير تبدأ من هنا</title>
+
+<meta name="description"
+content="معسكر التعافي — أدوات بسيطة تساعدك تفهم نفسك، تستعيد السيطرة على يومك، وتبني طريقك نحو الحرية خطوة بخطوة.">
+
+<meta name="robots" content="index,follow">
+<meta name="author" content="معسكر التعافي">
+
+<link rel="canonical" href="https://camp-ta3afi.com/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="معسكر التعافي — رحلتك نحو التغيير تبدأ من هنا">
+<meta property="og:description"
+content="أدوات بسيطة تساعدك تفهم نفسك، تستعيد السيطرة على يومك، وتبني طريقك نحو الحرية.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://camp-ta3afi.com/">
+<meta property="og:image" content="https://camp-ta3afi.com/assets/og-image.png">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:site_name" content="معسكر التعافي">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="معسكر التعافي — رحلتك نحو التغيير تبدأ من هنا">
+<meta name="twitter:description"
+content="أدوات بسيطة تساعدك تفهم نفسك، تستعيد السيطرة على يومك، وتبني طريقك نحو الحرية.">
+<meta name="twitter:image" content="https://camp-ta3afi.com/assets/og-image.png">
+
+<!-- Theme -->
+<meta name="theme-color" content="#0d1b2a">
+
+<link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+<link rel="apple-touch-icon" href="/assets/logo.svg">
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap"
+rel="stylesheet">
+
 <link rel="stylesheet" href="style_11.css">
- 
+
 </head>
+
 <body>
- 
+
+<!-- ============================== -->
+<!-- Background                     -->
+<!-- ============================== -->
+
 <div class="bg-scene">
   <span class="spark spark-1"></span>
   <span class="spark spark-2"></span>
@@ -37,176 +86,780 @@
   <span class="spark spark-21"></span>
   <span class="spark spark-22"></span>
 </div>
- 
-<header><div class="wrap nav">
+
+
+<!-- ============================== -->
+<!-- HEADER                         -->
+<!-- ============================== -->
+
+<header>
+
+<div class="wrap nav">
+
   <a class="logo" href="#">
-  <span class="logo-mark">
-    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+
+    <span class="logo-mark">
+
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+
+        <path
+          d="M26.5 5.5C17 5.8 8.2 9.3 7 17.2c-.7 4.7 2.2 8.2 6.6 8.2 8.2 0 12.1-8.4 12.9-19.9Z"
+          fill="rgba(255,255,255,.16)"
+          stroke="#fff"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+        />
+
+        <path
+          d="M7.5 25C11.2 18.8 15.8 14 22 10"
+          stroke="#fff"
+          stroke-width="1.3"
+          stroke-linecap="round"
+        />
+
+      </svg>
+
+    </span>
+
+    <span>معسكر التعافي</span>
+
+  </a>
+
+
+  <!-- LOGIN BUTTON -->
+
+  <button class="login-btn" id="loginBtn">
+
+    <svg viewBox="0 0 24 24" fill="none">
+
       <path
-        d="M26.5 5.5C17 5.8 8.2 9.3 7 17.2c-.7 4.7 2.2 8.2 6.6 8.2 8.2 0 12.1-8.4 12.9-19.9Z"
-        fill="rgba(255,255,255,.16)"
-        stroke="#fff"
-        stroke-width="1.5"
+        d="M15 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H3"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
         stroke-linejoin="round"
       />
-      <path
-        d="M7.5 25C11.2 18.8 15.8 14 22 10"
-        stroke="#fff"
-        stroke-width="1.3"
-        stroke-linecap="round"
-      />
-    </svg>
-  </span>
 
-  <span>معسكر التعافي</span>
-</a>
-  <button class="login-btn" onclick="openLogin()">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </svg>
+
     تسجيل الدخول
+
   </button>
-</div></header>
- 
-<main>
-  <section class="hero"><div class="wrap">
-    <span class="badge"><span class="dot"></span> مساحة حرة للجميع، التسجيل اختياري فقط</span>
-    <h1>رحلتك نحو <em>التغيير</em>يبدأ من هنا</h1>
-    <p class="intro">أدوات بسيطة تساعدك تفهم نفسك، تستعيد السيطرة على يومك، وتبني طريقك نحو الحرية — خطوة بخطوة</p>
-    <p class="note">جرّب الموقع أولاً. تسجيل الدخول يبقى اختياريًا، ويُستعمل فقط لحفظ تقدّمك الشخصي.</p>
- 
-    <button class="discover-cue" onclick="document.getElementById('toolsSection').scrollIntoView({behavior:'smooth'})">
-      اكتشف أدواتك
-      <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  </div></section>
- 
-  <section class="section" id="toolsSection" style="padding-top:6px"><div class="wrap">
-    <div class="head">
-      <div class="eyebrow">أدواتك</div>
-      <h2>خمس أدوات، خطوة واحدة كل مرة</h2>
-      <p>اضغط على أي أداة لتجربتها مباشرة</p>
-    </div>
 
-
-
-   
-
-
-
-
-
-   
-     <div class="tools">
-    
-
-     <a class="tool" href="gallery_1.html" onclick="demo(event,'لوحة تحكم')">
-        <span class="sticker dash">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M5 20V10M12 20V4M19 20v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </span>
-        <span class="main-t"><h3>لوحة تحكم</h3><p>تابع تقدّمك ومستواك بعد تسجيل الدخول.</p></span>
-        <span class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-
-   
-  <a class="tool quote-day" href="bp4.html" onclick="demo(event,'مقولة اليوم')">
-  <span class="sticker quote-sticker">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M7 10c0-2.5 1.8-4.5 4-5M7 10c-1.8.6-3 2-3 4v3h5v-4H6.2
-           M17 10c0-2.5 1.8-4.5 4-5M17 10c-1.8.6-3 2-3 4v3h5v-4h-2.8"
-        stroke="currentColor"
-        stroke-width="1.6"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  </span>
-
-  <span class="main-t">
-    <h3>مقولة اليوم</h3>
-    <p>
-      الشفاء ليس خطًا مستقيمًا، لكن كل خطوة صغيرة تقربك من نفسك الحقيقية.
-    </p>
-  </span>
-
-  <span class="arrow">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M15 5 8 12l7 7"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  </span>
-
-</a>
- 
-  
- 
-      <a class="tool" href="bp6.html" onclick="demo(event,'خذ نفس')">
-        <span class="sticker breath">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12c2-4 6-6 8-6s6 2 8 6c-2 4-6 6-8 6s-6-2-8-6Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-        </span>
-        <span class="main-t"><h3>خذ نفس</h3><p>تمرين قصير للتوقف لحظة واستعادة الهدوء والتركيز.</p></span>
-        <span class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
- 
-      <a class="tool" href="bp1.html" onclick="demo(event,'رتّب يومك')">
-        <span class="sticker goals">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M9 6h10M9 12h10M9 18h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="m4 6 1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-        <span class="main-t"><h3>رتّب يومك</h3><p>خطوات بسيطة تساعدك تنظّم أهدافك اليومية بدون ضغط.</p></span>
-        <span class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
- 
-      <a class="tool" href="bp5.html" onclick="demo(event,'اكتب ما تشعر به')">
-        <span class="sticker diary">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 10h6M9 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </span>
-        <span class="main-t"><h3>مذكرتي</h3><p>مساحتك الآمنة والخاصة للكتابة عمّا تشعر به.</p></span>
-        <span class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
- 
-      <a class="tool" href="encyclopedia.html" onclick="demo(event,'مكتبة التعافي')">
-        <span class="sticker library">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5v-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        </span>
-        <span class="main-t"><h3>مكتبة التعافي</h3><p>موسوعة مقالات مفتوحة للجميع تضيء طريقك نحو نفسك.</p></span>
-        <span class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
- 
-     
- 
-    </div>
- 
-    <div class="info">
-      <h3>تذكّر دائمًا</h3>
-      <p>الحرية تبدأ عندما تقرر أن تستعيد نفسك</p>
-    </div>
-  </div></section>
-</main>
- 
-<footer>© معسكر التعافي — كل الحقوق محفوظة</footer>
- 
-<div class="modal" id="m" onclick="closeLogin(event)">
-  <div class="box">
-    <h3>تسجيل الدخول</h3>
-    <p id="modalText">هذا نموذج تجريبي. في الموقع الحقيقي سيبقى نظام تسجيل الدخول عبر Google، دون أن يكون إجباريًا لتصفح الموقع.</p>
-    <div class="actions"><button class="btn btn-main" onclick="closeLogin()">حسنًا</button></div>
-  </div>
 </div>
- 
+
+</header>
+
+
+<!-- ============================== -->
+<!-- MAIN                           -->
+<!-- ============================== -->
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="wrap">
+
+  <span class="badge">
+
+    <span class="dot"></span>
+
+    مساحة حرة للجميع، التسجيل اختياري فقط
+
+  </span>
+
+
+  <h1>
+    رحلتك نحو <em>التغيير</em> تبدأ من هنا
+  </h1>
+
+
+  <p class="intro">
+    أدوات بسيطة تساعدك تفهم نفسك، تستعيد السيطرة على يومك،
+    وتبني طريقك نحو الحرية — خطوة بخطوة
+  </p>
+
+
+  <p class="note">
+    جرّب الموقع أولاً. تسجيل الدخول يبقى اختياريًا،
+    ويُستعمل فقط لحفظ تقدّمك الشخصي.
+  </p>
+
+
+  <button
+    class="discover-cue"
+    onclick="document.getElementById('toolsSection').scrollIntoView({behavior:'smooth'})">
+
+    اكتشف أدواتك
+
+    <svg viewBox="0 0 24 24" fill="none">
+
+      <path
+        d="M6 9l6 6 6-6"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+    </svg>
+
+  </button>
+
+</div>
+
+</section>
+
+
+<!-- ============================== -->
+<!-- TOOLS                          -->
+<!-- ============================== -->
+
+<section
+  class="section"
+  id="toolsSection"
+  style="padding-top:6px">
+
+<div class="wrap">
+
+
+  <div class="head">
+
+    <div class="eyebrow">
+      أدواتك
+    </div>
+
+    <h2>
+      خمس أدوات، خطوة واحدة كل مرة
+    </h2>
+
+    <p>
+      اضغط على أي أداة لتجربتها مباشرة
+    </p>
+
+  </div>
+
+
+  <div class="tools">
+
+
+    <!-- لوحة التحكم -->
+
+    <a
+      class="tool"
+      href="gallery_1.html">
+
+      <span class="sticker dash">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M5 20V10M12 20V4M19 20v-7"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+
+        </svg>
+
+      </span>
+
+
+      <span class="main-t">
+
+        <h3>
+          لوحة تحكم
+        </h3>
+
+        <p>
+          تابع تقدّمك ومستواك بعد تسجيل الدخول.
+        </p>
+
+      </span>
+
+
+      <span class="arrow">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M15 5 8 12l7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </span>
+
+    </a>
+
+
+
+    <!-- مقولة اليوم -->
+
+    <a
+      class="tool quote-day"
+      href="bp4.html">
+
+      <span class="sticker quote-sticker">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M7 10c0-2.5 1.8-4.5 4-5M7 10c-1.8.6-3 2-3 4v3h5v-4H6.2
+               M17 10c0-2.5 1.8-4.5 4-5M17 10c-1.8.6-3 2-3 4v3h5v-4h-2.8"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </span>
+
+
+      <span class="main-t">
+
+        <h3>
+          مقولة اليوم
+        </h3>
+
+        <p>
+          الشفاء ليس خطًا مستقيمًا، لكن كل خطوة صغيرة تقربك من نفسك الحقيقية.
+        </p>
+
+      </span>
+
+
+      <span class="arrow">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M15 5 8 12l7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </span>
+
+    </a>
+
+
+
+    <!-- خذ نفس -->
+
+    <a
+      class="tool"
+      href="bp6.html">
+
+      <span class="sticker breath">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M4 12c2-4 6-6 8-6s6 2 8 6c-2 4-6 6-8 6s-6-2-8-6Z"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+
+          <circle
+            cx="12"
+            cy="12"
+            r="2.4"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+
+        </svg>
+
+      </span>
+
+
+      <span class="main-t">
+
+        <h3>
+          خذ نفس
+        </h3>
+
+        <p>
+          تمرين قصير للتوقف لحظة واستعادة الهدوء والتركيز.
+        </p>
+
+      </span>
+
+
+      <span class="arrow">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M15 5 8 12l7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </span>
+
+    </a>
+
+
+
+    <!-- رتب يومك -->
+
+    <a
+      class="tool"
+      href="bp1.html">
+
+      <span class="sticker goals">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M9 6h10M9 12h10M9 18h10"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="m4 6 1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </span>
+
+
+      <span class="main-t">
+
+        <h3>
+          رتّب يومك
+        </h3>
+
+        <p>
+          خطوات بسيطة تساعدك تنظّم أهدافك اليومية بدون ضغط.
+        </p>
+
+      </span>
+
+
+      <span class="arrow">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M15 5 8 12l7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </span>
+
+    </a>
+
+
+
+    <!-- مذكرتي -->
+
+    <a
+      class="tool"
+      href="bp5.html">
+
+      <span class="sticker diary">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+
+          <path
+            d="M9 10h6M9 14h4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+
+        </svg>
+
+      </span>
+
+
+      <span class="main-t">
+
+        <h3>
+          مذكرتي
+        </h3>
+
+        <p>
+          مساحتك الآمنة والخاصة للكتابة عمّا تشعر به.
+        </p>
+
+      </span>
+
+
+      <span class="arrow">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M15 5 8 12l7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </span>
+
+    </a>
+
+
+
+    <!-- مكتبة التعافي -->
+
+    <a
+      class="tool"
+      href="encyclopedia.html">
+
+      <span class="sticker library">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+
+          <path
+            d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5v-13Z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </span>
+
+
+      <span class="main-t">
+
+        <h3>
+          مكتبة التعافي
+        </h3>
+
+        <p>
+          موسوعة مقالات مفتوحة للجميع تضيء طريقك نحو نفسك.
+        </p>
+
+      </span>
+
+
+      <span class="arrow">
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M15 5 8 12l7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </span>
+
+    </a>
+
+
+  </div>
+
+
+  <!-- ============================== -->
+  <!-- FINAL MESSAGE                  -->
+  <!-- ============================== -->
+
+  <div class="info">
+
+    <h3>
+      تذكّر دائمًا
+    </h3>
+
+    <p>
+      الحرية تبدأ عندما تقرر أن تستعيد نفسك
+    </p>
+
+  </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- ============================== -->
+<!-- FOOTER                         -->
+<!-- ============================== -->
+
+<footer>
+© معسكر التعافي — كل الحقوق محفوظة
+</footer>
+
+
+<!-- ============================== -->
+<!-- LOGIN MODAL                    -->
+<!-- ============================== -->
+
+<div
+  class="modal"
+  id="m"
+  onclick="closeLogin(event)">
+
+  <div class="box">
+
+    <h3>
+      تسجيل الدخول
+    </h3>
+
+    <p id="modalText">
+      جاري فتح تسجيل الدخول عبر Google...
+    </p>
+
+    <div class="actions">
+
+      <button
+        class="btn btn-main"
+        onclick="closeLogin()">
+
+        حسنًا
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ============================== -->
+<!-- FIREBASE AUTH                  -->
+<!-- ============================== -->
+
 <script>
-function openLogin(){document.getElementById('modalText').textContent =
-  'هذا نموذج تجريبي. في الموقع الحقيقي سيبقى نظام تسجيل الدخول عبر Google، دون أن يكون إجباريًا لتصفح الموقع.';
-  document.getElementById('m').classList.add('open')}
-function closeLogin(e){if(!e || e.target.id==='m' || e.currentTarget===undefined)document.getElementById('m').classList.remove('open')}
-function demo(e,name){
-  e.preventDefault();
-  document.getElementById('modalText').textContent = 'نموذج تجريبي: هنا غادي نربط صفحة "'+name+'" بالأداة الحقيقية ديالها.';
-  document.getElementById('m').classList.add('open');
+
+/* =================================
+   Firebase Configuration
+================================= */
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyASJCSX74_gVGQ_zzROpgFZPSGC5mecLss",
+
+  authDomain: "ta3afa-f5e9d.firebaseapp.com",
+
+  projectId: "ta3afa-f5e9d",
+
+  storageBucket: "ta3afa-f5e9d.appspot.com",
+
+  messagingSenderId: "1039885292105",
+
+  appId: "1:1039885292105:web:dcfe9202ecb6cc98dfa598"
+
+};
+
+
+/* =================================
+   Initialize Firebase
+================================= */
+
+firebase.initializeApp(firebaseConfig);
+
+
+/* =================================
+   Firebase References
+================================= */
+
+const auth = firebase.auth();
+
+const db = firebase.firestore();
+
+
+/* =================================
+   Login Button
+================================= */
+
+document.getElementById("loginBtn").addEventListener("click", async function () {
+
+  const loginBtn = this;
+
+  try {
+
+    /* تعطيل الزر أثناء تسجيل الدخول */
+
+    loginBtn.disabled = true;
+
+    loginBtn.innerHTML = "جاري تسجيل الدخول...";
+
+
+    /* Google Provider */
+
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+
+    /* فتح Google Login */
+
+    const result = await auth.signInWithPopup(provider);
+
+
+    /* المستخدم */
+
+    const user = result.user;
+
+
+    /* =================================
+       حفظ المستخدم في Firestore
+    ================================= */
+
+    await db
+      .collection("users")
+      .doc(user.uid)
+      .set({
+
+        name: user.displayName || "",
+
+        email: user.email || "",
+
+        photo: user.photoURL || "",
+
+        progress: 0,
+
+        level: 1,
+
+        message: "غادي نكمل ونتطور",
+
+        createdAt:
+          firebase.firestore.FieldValue.serverTimestamp()
+
+      }, { merge: true });
+
+
+    /* =================================
+       نجاح تسجيل الدخول
+    ================================= */
+
+    loginBtn.innerHTML =
+      "✅ مرحباً " + (user.displayName || "بك");
+
+
+    /* الانتقال إلى لوحة التحكم */
+
+    window.location.href = "gallery_1.html";
+
+
+  } catch (error) {
+
+    console.error("Firebase Login Error:", error);
+
+
+    /* إعادة الزر لحالته الطبيعية */
+
+    loginBtn.disabled = false;
+
+    loginBtn.innerHTML = `
+
+      <svg viewBox="0 0 24 24" fill="none">
+
+        <path
+          d="M15 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H3"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+      </svg>
+
+      تسجيل الدخول
+
+    `;
+
+
+    /* رسالة الخطأ */
+
+    if (error.code === "auth/popup-closed-by-user") {
+
+      console.log("تم إغلاق نافذة تسجيل الدخول.");
+
+    } else {
+
+      alert(
+        "تعذر تسجيل الدخول عبر Google. حاول مرة أخرى."
+      );
+
+    }
+
+  }
+
+});
+
+
+/* =================================
+   Login Modal
+================================= */
+
+function closeLogin(e) {
+
+  if (
+    !e ||
+    e.target.id === "m" ||
+    e.currentTarget === undefined
+  ) {
+
+    document
+      .getElementById("m")
+      .classList.remove("open");
+
+  }
+
 }
+
 </script>
+
 </body>
 </html>
