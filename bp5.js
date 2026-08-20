@@ -48,30 +48,6 @@ popup00.onclick = function(e){
 
 
 // ✅ التحقق من المستخدم
-auth.onAuthStateChanged(async (user) => {
-
-    if(user){
-
-        currentUser = user;
-
-        // ✅ جلب النص المحفوظ
-        const docSnap = await db
-        .collection("users")
-        .doc(user.uid)
-        .get();
-
-        if(docSnap.exists){
-
-            const data = docSnap.data();
-
-            note00.value = data.note00 || "";
-        }
-
-    }else{
-
-        window.location.href = "index.html";
-    }
-});
 
 
 // ✅ حفظ تلقائي أثناء الكتابة
