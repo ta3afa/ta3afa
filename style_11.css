@@ -187,16 +187,35 @@ color:var(--ink);
 @media(max-width:560px){
   .quote-day{padding:16px}
 }
-.tool{
-  display:flex;align-items:center;gap:16px;
-  background:var(--card);border:1px solid var(--line);border-radius:18px;
-  padding:16px 18px;box-shadow:var(--shadow);
-  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+.tool {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 3px solid transparent;
+  border-radius: 18px;
+  padding: 20px 18px;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    conic-gradient(
+      from var(--angle),
+      #4285F4 0deg, #4285F4 90deg,
+      #EA4335 90deg, #EA4335 180deg,
+      #FBBC05 180deg, #FBBC05 270deg,
+      #34A853 270deg, #34A853 360deg
+    ) border-box;
+  animation: spin 2s linear infinite;
+  box-shadow: 0 10px 30px rgba(22,48,42,.06);
+  color: var(--ink);
 }
-.tool:hover,.tool:focus-visible{
-  transform:translateY(-3px);
-  box-shadow:var(--shadow-lift);
-  border-color:transparent;
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  to { --angle: 360deg; }
 }
 .sticker{
   flex:none;width:52px;height:52px;border-radius:15px;
