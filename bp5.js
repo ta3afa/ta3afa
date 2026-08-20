@@ -48,7 +48,34 @@ popup00.onclick = function(e){
 
 
 // ✅ التحقق من المستخدم
+// ✅ التحقق من المستخدم
 
+auth.onAuthStateChanged(async (user) => {
+
+    if (user) {
+
+        currentUser = user;
+
+        try {
+
+            const docSnap = await db
+                .collection("users")
+                .doc(user.uid)
+                .get();
+
+            if (docSnap.exists) {
+
+                const data = docSnap.data();
+
+                note00.value = data.note00 || "";
+            }
+
+        } catch (error) {
+
+            console.log(error);
+        }
+    }
+});
 
 // ✅ حفظ تلقائي أثناء الكتابة
 note00.oninput = async function(){
